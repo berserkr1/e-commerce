@@ -1,0 +1,9 @@
+<form class="form-signin" method="post" action="index.php?page=login">
+	<div style="background-color:red;"><?=implode('<br/>', $errors)?></div>
+    <h2 class="form-signin-heading">Identifiez vous</h2>
+    <label for="inputEmail" class="sr-only">Login</label>
+    <input type="text" id="inputLogin" class="form-control" name="login" placeholder="Login" required autofocus>
+    <label for="inputPassword" class="sr-only">Mot de passe</label>
+    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+    <button class="btn btn-md btn-primary btn-block" type="submit">Sign in</button>
+</form>
