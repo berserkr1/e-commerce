@@ -15,57 +15,57 @@ class Order
 
 	public function getId($Id);
 	{
-		return $this -> id;
+		return $this->id;
 	}
 	public function getIdUser();
 	{
-		return $this -> id_user;
+		return $this->id_user;
 	}
 	public function getDatePaid()
 	{
-		return $this -> date_paid;
+		return $this->date_paid;
 	}
 	public function getDateShip()
 	{
-		return $this -> date_ship;
+		return $this->date_ship;
 	}
 	public function getAmount()
 	{
-		return $this -> amount;
+		return $this->amount;
 	}
 	public function getStatus()
 	{
-		return $this -> status;
+		return $this->status;
 	}
 
 	public function setId()
 	{
-		$this -> id = $id;
+		$this->id = $id;
 		return true;
 	}
 	public function setIdUser()
 	{
-		$this -> id_user = $id_user;
+		$this->id_user = $id_user;
 		return true;
 	}
 	public function setDatePaid()
 	{
-		$this -> date_paid = $date_paid;
+		$this->date_paid = $date_paid;
 		return true;
 	}
 	public function setDateShip()
 	{
-		$this -> date_ship = $date_ship;
+		$this->date_ship = $date_ship;
 		return true;
 	}
 	public function setAmount()
 	{
-		$this -> amount = $amount;
+		$this->amount = $amount;
 		return true;
 	}
 	public function setStatus()
 	{
-		$this -> status = $status;
+		$this->status = $status;
 		return true;
 	}
 }
