@@ -1,0 +1,54 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+/*--GENERAL--*/
+
+html, body {
+	height: 85.8%;
+}
+
+.wrap {
+	min-height: 100%;
+    height: auto !important;    
+}
+
+.main {
+	overflow: auto;    
+}
+
+.form-control, .btn {
+	border-radius: 0;
+}
+
+/*--NAV--*/
+
+.navbar {
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid black;
+	margin:0;
+}
+.navbar-category{
+	float:none;
+	text-align: center;
+}
+.dropdown {
+	padding: 0;
+}
+.dropdown-menu {
+	left:10;
+	width:100%;
+	text-align: center;
+}
+
+/*--FOOTER--*/
+
+footer {
+	position: relative;
+	height: 150px;
+	background-color: #222;
+	text-align: center;
+	color: #9D9D9D;
+}

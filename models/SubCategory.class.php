@@ -14,48 +14,48 @@ class SubCategory
 
 	public function getId()
 	{
-		return $this -> id;
+		return $this->id;
 	}
 	public function getIdCategory()
 	{
-		return $this -> id_category;
+		return $this->id_category;
 	}
 	public function getName()
 	{
-		return $this -> name;
+		return $this->name;
 	}
 	public function getDescription()
 	{
-		return $this -> description;
+		return $this->description;
 	}
 	public function getImg()
 	{
-		return $this -> img;
+		return $this->img;
 	}
 
 	public function setId()
 	{
-		$this -> id = $id;
+		$this->id = $id;
 		return true;
 	}
 	public function setIdCategory()
 	{
-		$this -> id_category = $id_category;
+		$this->id_category = $id_category;
 		return true;
 	}
 	public function setName()
 	{
-		$this -> name = $name;
+		$this->name = $name;
 		return true;
 	}
 	public function setDescription()
 	{
-		$this -> description = $description;
+		$this->description = $description;
 		return true;
 	}
 	public function setImg()
 	{
-		$this -> img = $img;
+		$this->img = $img;
 		return true;
 	}
 }
