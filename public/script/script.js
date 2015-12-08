@@ -100,7 +100,9 @@ $(document).ready(function() {
         });
       }
      
-      $("#owl-demo-category").owlCarousel({
+      $("#owl-demo-category").owlCarousel({ 
+        autoPlay : 3000,
+        stopOnHover : true,      
         navigation: false,
         navigationText: [
           "<i class='fa fa-chevron-left icon-white'></i>",
@@ -129,6 +131,8 @@ $(document).ready(function() {
       }
      
       $(".owl-demo-product").owlCarousel({
+        autoPlay : 3000,
+        stopOnHover : true,
         navigation: false,
         navigationText: [
           "<i class='fa fa-chevron-left icon-white'></i>",
