@@ -73,6 +73,7 @@
 				require('apps/traitement_'.$traitements_admin[$_GET['page']].'.php');
 			}
 		}
+	}
 
 // Pages de défaut
 	else
@@ -93,5 +94,3 @@
 
 	/* TURN OFF SESSION SUCCESS*/
 	$_SESSION['success'] = "";
-
-?>
