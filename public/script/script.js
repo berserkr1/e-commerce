@@ -1,3 +1,5 @@
+// Slideshow home
+
 $(document).ready(function() {
  
   var time = 7; // time in seconds
@@ -84,3 +86,32 @@ $(document).ready(function() {
     // })
  
 })
+
+// Slideshow category
+
+$(document).ready(function() {
+     
+      //Sort random function
+      function random(owlSelector){
+        owlSelector.children().sort(function(){
+            return Math.round(Math.random()) - 0.5;
+        }).each(function(){
+          $(this).appendTo(owlSelector);
+        });
+      }
+     
+      $("#owl-demo-category").owlCarousel({
+        navigation: true,
+        navigationText: [
+          "<i class='fa fa-chevron-left icon-white'></i>",
+          "<i class='fa fa-chevron-right icon-white'></i>"
+          ],
+        beforeInit : function(elem){
+          //Parameter elem pointing to $("#owl-demo")
+          random(elem);
+        }
+     
+      });
+     
+});
+
