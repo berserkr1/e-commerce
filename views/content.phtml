@@ -1,4 +1,7 @@
 <?php
 if ( isset($page)) {
-	require ('apps/'.$page.'.php');}
+	require ('apps/'.$page.'.php');
+}
+require("apps/error.php");
+require("apps/success.php");
 ?>
