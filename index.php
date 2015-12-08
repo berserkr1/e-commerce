@@ -24,6 +24,9 @@
 		$_SESSION['visiteur'] = true;
 	}
 
+// Init constantes
+	require('init_const.php');
+
 // ________ HUB ________
 	// Pages
 	$access_public = array('404', 'home', 'category', 'subcategory', 'list-product', 'product', 'basket', 'register', 'login');
@@ -64,7 +67,7 @@
 		}
 
 		// Pages admins
-		else if (in_array($_GET['page'], $access_admin) && isset($_SESSION['id']) && ($currentUser->getStatus()) > 0)
+		else if (in_array($_GET['page'], $access_admin) && isset($_SESSION['id']) && ($currentUser->getStatus()) > 1)
 		{
 			$page = $_GET['page'];
 
