@@ -21,7 +21,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bonjour <span class="login"><?php echo $_SESSION['login']; ?></span><span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bonjour <span class="login"><?=htmlentities($currentUser->getLogin()); ?></span><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <a href="?page=profil&amp;id=<?=$_SESSION['id']?>" class="lien-profil">Voir mon profil</a> 
             <li role="separator" class="divider"></li>
@@ -32,10 +32,10 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+<nav class="navbar nav-category navbar-inverse">
+  <div class="container-fluid sub-container">
     <ul class="nav navbar-nav navbar-category">
-      <li class="dropdown">
+      <li class="dropdown col-md-3 col-sm-3 col-xs-12">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category 1 <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#">SubCategory 1</a></li>
@@ -45,7 +45,7 @@
           <li><a href="#">SubCategory 5</a></li>
         </ul>
       </li>
-      <li class="dropdown">
+      <li class="dropdown col-md-3 col-sm-3 col-xs-12">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category 2 <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#">SubCategory 1</a></li>
@@ -55,7 +55,7 @@
           <li><a href="#">SubCategory 5</a></li>
         </ul>
       </li>
-      <li class="dropdown">
+      <li class="dropdown col-md-3 col-sm-3 col-xs-12">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category 3 <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#">SubCategory 1</a></li>
@@ -65,18 +65,8 @@
           <li><a href="#">SubCategory 5</a></li>
         </ul>
       </li>
-      <li class="dropdown">
+      <li class="dropdown col-md-3 col-sm-3 col-xs-12">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category 4 <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">SubCategory 1</a></li>
-          <li><a href="#">SubCategory 2</a></li>
-          <li><a href="#">SubCategory 3</a></li>
-          <li><a href="#">SubCategory 4</a></li>
-          <li><a href="#">SubCategory 5</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category 5 <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#">SubCategory 1</a></li>
           <li><a href="#">SubCategory 2</a></li>

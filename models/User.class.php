@@ -11,10 +11,10 @@ class User
 	private $date_birth;
 	private $date_register;
 
-	public function __construct($db);
-	{
-		$this->db = $db;
-	}
+	// public function __construct($db);
+	// {
+	// 	$this->db = $db;
+	// }
 
 	public function getId()
 	{
@@ -24,7 +24,7 @@ class User
 	{
 		return $this->login;
 	}
-	public function getPassword()
+	public function getHash()
 	{
 		return $this->password;
 	}
@@ -100,8 +100,7 @@ class User
 	}
 	public function setEmail($email)
 	{
-		$regex = "@";
-		if (strlen($email) > 1 && strlen($email) < 32 && ereg($regex,$email))
+		if (strlen($email) > 1 && strlen($email) < 32)
 		{
 			$this -> email = $email;
 			return true;
@@ -135,7 +134,7 @@ class User
 			throw new Exception("Invalid surname");
 		}
 	}
-	public function setDateBirth()
+	public function setDateBirth($date_birth)
 	{
 		$this->date_birth = $date_birth;
 		return true;
