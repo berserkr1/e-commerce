@@ -94,3 +94,5 @@
 
 	/* TURN OFF SESSION SUCCESS*/
 	$_SESSION['success'] = "";
+
+?>
