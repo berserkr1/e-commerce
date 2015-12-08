@@ -8,7 +8,7 @@ class UserManager
 		$this->db = $db;
 	}
 
-	public function create(User $login, $password1, $password2, $email, $name, $surname, $date_birth)
+	public function create($login, $password1, $password2, $email, $name, $surname, $date_birth)
 	{
 		$errors = array();
 		$user = new User($this -> db);
@@ -30,10 +30,10 @@ class UserManager
 		// $errors[] = $user->setPassword($password1, $password2);
 		// $errors[] = $user->setEmail($email);
 		// $errors[] = $user->setAvatar($avatar);
-		// $errors = array_filter($errors, function($val)
-		// {
-		// 	return $val !== true;
-		// });
+		$errors = array_filter($errors, function($val)
+		{
+			return $val !== true;
+		});
 		if (count($errors) == 0)
 		{
 			// $login = mysqli_real_escape_string($this->db, $user->getLogin());
@@ -41,17 +41,17 @@ class UserManager
 			// $email = mysqli_real_escape_string($this->db, $user->getEmail());
 			$email = $this->db->quote($user->getEmail());
 			// $password = $user->getHash();
-			$password = $this->db->quote($user->getHash());
+			$password = $user->getHash();
 			// $name = mysqli_real_escape_string($this->db, $user->getName());
 			$name = $this->db->quote($user->getName());
 			$surname = $this->db->quote($user->getSurname());
 			$date_birth = $user->getDateBirth();
 			$query = "INSERT INTO user (login, password, email, name, surname, date_birth) VALUES('".$login."', '".$password."', '".$email."', '".$name."', '".$surname."', '".$date_birth."')";
 			// $res = mysqli_query($this->db, $query);
-			$res = $db->exec($query);
+			$res = $this->db->exec($query);
 			if ($res)
 			{
-				$id = mysqli_insert_id($this->db);
+				$id = PDO::lastInsertId();
 				if ($id)
 				{
 					return $this->findById($id);
@@ -61,10 +61,7 @@ class UserManager
 					return "Internal server error";
 				}
 			}
-			else
-			{
-				return mysqli_error($this->db);
-			}
+		
 		}
 		else
 		{
@@ -145,10 +142,10 @@ class UserManager
 		if (strlen(trim($login)) > 0)
 		{
 			// $login = mysqli_real_escape_string($this->db, $login);
-			$login = $this->db->quote($user->getLogin());
+			$login = $this->db->quote($login);
 			$query = "SELECT * FROM user WHERE login='".$login."'";
 			// $res = mysqli_query($this->db, $query);
-			$res = $db->query($query);
+			$res = $this->db->query($query);
 			if ($res)
 			{
 				// $user = mysqli_fetch_object($res, "User");

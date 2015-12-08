@@ -38,6 +38,10 @@ if (isset($_GET['page']))
 			{
 				$errors = array_merge($errors, $retour);
 			}
+			else if (is_string($retour)) 
+			{
+				$errors[]=$retour;
+			}
 			else
 			{
 				header('Location: index.php?page=login');

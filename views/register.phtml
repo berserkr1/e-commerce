@@ -5,29 +5,33 @@
           <h3 class="panel-title">Enregistrez votre compte</h3>
         </div>
         <div class="panel-body">
-          <form method="post">
+          <form action="?page=register" method="post">
             <div style="background-color:red;"><?=implode('<br/>', $errors)?></div>
-            <div class="form-group">
+            <div class="form-group input-register">
               <input type="text" class="form-control" name="login" id="login" placeholder="Login" value="<?=htmlentities($login)?>" >
             </div>
-            <div class="form-group col-md-6 col-sm-6">
-              <input type="password" class="form-control" name="password1" id="password1" placeholder="Password">
+            <div class="row">
+              <div class="form-group col-md-6 col-sm-6 input-register">
+                <input type="password" class="form-control" name="password1" id="password1" placeholder="Password">
+              </div>
+              <div class="form-group col-md-6 col-sm-6 input-register">
+                <input type="password" class="form-control" name="password2" id="password2" placeholder="Retype password">
+              </div>
             </div>
-            <div class="form-group col-md-6 col-sm-6">
-              <input type="password" class="form-control" name="password2" id="password2" placeholder="Retype password">
-            </div>
-            <div class="form-group">
+            
+            <div class="form-group input-register">
               <input type="email" class="form-control" name="email" id="Email" placeholder="Email" value="<?=htmlentities($email)?>">
             </div>
-            <div class="form-group col-md-6 col-sm-6">
-              <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="<?=htmlentities($name)?>">
+            <div class="row">
+              <div class="form-group col-md-6 col-sm-6 input-register">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="<?=htmlentities($name)?>">
+              </div>
+              <div class="form-group col-md-6 col-sm-6 input-register">
+                <input type="text" class="form-control" name="surname" id="surname" placeholder="Surname" value="<?=htmlentities($surname)?>">
+              </div>
             </div>
-            <div class="form-group col-md-6 col-sm-6">
-              <input type="text" class="form-control" name="surname" id="surname" placeholder="Surname" value="<?=htmlentities($surname)?>">
-            </div>
-            <div class="input-append date" id="dp3" data-date-format="dd-mm-yyyy">
-              <input class="span2" size="16" type="text" name="date_birth" placeholder="dd-mm-yyyy" value="<?=htmlentities($date_birth)?>">
-              <span class="add-on"><i class="icon-th"></i></span>
+            <div class="form-group input-register">
+              <input class="input-register form-control" type="text" name="date_birth" placeholder="dd-mm-yyyy" value="<?=htmlentities($date_birth)?>">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
