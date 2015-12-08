@@ -23,9 +23,9 @@
        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bonjour <span class="login"><?php echo $_SESSION['login']; ?></span><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <a href="?page=profil&id=<?=$_SESSION['id']?>" class="lien-profil">Voir mon profil</a> 
+            <a href="?page=profil&amp;id=<?=$_SESSION['id']?>" class="lien-profil">Voir mon profil</a> 
             <li role="separator" class="divider"></li>
-             <button class="btn btn-default"><a href="?page=logout&action=logout" class="aNav">Logout</a></button>
+             <button class="btn btn-default"><a href="?page=logout&amp;action=logout" class="aNav">Logout</a></button>
           </ul>
         </li>
       </ul>
