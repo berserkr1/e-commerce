@@ -19,6 +19,10 @@
 		$userManager = new UserManager($db);
 		$currentUser = $userManager->getCurrent();
 	}
+	else
+	{
+		$_SESSION['visiteur'] = true;
+	}
 
 // ________ HUB ________
 	// Pages
@@ -51,40 +55,26 @@
 		// Pages utilisateurs
 		else if (in_array($_GET['page'], $access_user) && isset($_SESSION['id']))
 		{
-			if (in_array($_GET['page'], $access_ids))
+			$page = $_GET['page'];
+
+			if (isset($traitements_user[$_GET['page']]))
 			{
-				if (isset($_GET['id']))
-				{
-					$page = $_GET['page'];
-				}
-				else
-				{
-					header('Location: ?page=home');
-					exit;
-				}
-			}
-			else
-			{
-				$page = $_GET['page'];
-			}
-			if (isset($handlers_user[$_GET['page']]) && !empty($_POST))
-			{
-				require('controllers/handler/handler_'.$handlers_user[$_GET['page']].'.php');
+				require('apps/traitement_'.$traitements_user[$_GET['page']].'.php');
 			}
 		}
 
-		// Admin pages
-		else if (in_array($_GET['page'], $access_admin) && isset($_SESSION['id']) && ($currentUser -> getStatus()) > 0)
+		// Pages admins
+		else if (in_array($_GET['page'], $access_admin) && isset($_SESSION['id']) && ($currentUser->getStatus()) > 0)
 		{
 			$page = $_GET['page'];
 
-			if (isset($handlers_admin[$_GET['page']]) && !empty($_POST))
+			if (isset($traitements_admin[$_GET['page']]))
 			{
-				require('controllers/handler/handler_'.$handlers_admin[$_GET['page']].'.php');
+				require('apps/traitement_'.$traitements_admin[$_GET['page']].'.php');
 			}
 		}
 
-// Default pages
+// Pages de défaut
 	else
 	{
 		if (isset($_SESSION['id']))
@@ -98,18 +88,6 @@
 			exit;
 		}
 	}
-}
-else
-{
-	if (isset($_SESSION['id']))
-	{
-		$page = 'home';
-	}
-	else
-	{
-		$page = 'login';
-	}
-}
 
 	require('apps/skel.php');
 
