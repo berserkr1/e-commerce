@@ -46,12 +46,12 @@ class UserManager
 			$name = $this->db->quote($user->getName());
 			$surname = $this->db->quote($user->getSurname());
 			$date_birth = $user->getDateBirth();
-			$query = "INSERT INTO user (login, password, email, name, surname, date_birth) VALUES('".$login."', '".$password."', '".$email."', '".$name."', '".$surname."', '".$date_birth."')";
+			$query = "INSERT INTO user (login, password, email, name, surname, date_birth) VALUES(".$login.", '".$password."', ".$email.", ".$name.", ".$surname.", '".$date_birth."')";
 			// $res = mysqli_query($this->db, $query);
 			$res = $this->db->exec($query);
 			if ($res)
 			{
-				$id = PDO::lastInsertId();
+				$id = $this->db->lastInsertId();
 				if ($id)
 				{
 					return $this->findById($id);
@@ -118,11 +118,11 @@ class UserManager
 		$id = intval($id);
 		$query = "SELECT * FROM user WHERE id='".$id."'";
 		// $res = mysqli_query($this->db, $query);
-		$res = $db->query($query);
+		$res = $this->db->query($query);
 		if ($res)
 		{
 			// $user = mysqli_fetch_object($res, "User");
-			$user = $res->fetchObject("User", array($this->db));
+			$user = $res->fetchObject("User"/*, array($this->db)*/);
 			if ($user)
 			{
 				return $user;
@@ -143,13 +143,13 @@ class UserManager
 		{
 			// $login = mysqli_real_escape_string($this->db, $login);
 			$login = $this->db->quote($login);
-			$query = "SELECT * FROM user WHERE login='".$login."'";
+			$query = "SELECT * FROM user WHERE login=".$login;
 			// $res = mysqli_query($this->db, $query);
 			$res = $this->db->query($query);
 			if ($res)
 			{
 				// $user = mysqli_fetch_object($res, "User");
-				$user = $res->fetchObject("User", array($this->db));
+				$user = $res->fetchObject("User"/*, array($this->db)*/);
 				if ($user) {
 					return $user;
 				}					
@@ -176,7 +176,7 @@ class UserManager
 			if ($res)
 			{
 				// $user = mysqli_fetch_object($res, "User");
-				$user = $res->fetchObject("User", array($this->db));
+				$user = $res->fetchObject("User"/*, array($this->db)*/);
 				if ($user)
 				{
 					return $user;
