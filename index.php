@@ -45,7 +45,7 @@
 		{
 			$page = $_GET['page'];
 
-			if (isset($traitements_public[$_GET['page']]))
+			if (isset($traitements_public[$_GET['page']]) && !empty($_POST))
 			{
 				require('apps/traitement_'.$traitements_public[$_GET['page']].'.php');
 			}
