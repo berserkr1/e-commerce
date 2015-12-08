@@ -101,7 +101,35 @@ $(document).ready(function() {
       }
      
       $("#owl-demo-category").owlCarousel({
-        navigation: true,
+        navigation: false,
+        navigationText: [
+          "<i class='fa fa-chevron-left icon-white'></i>",
+          "<i class='fa fa-chevron-right icon-white'></i>"
+          ],
+        beforeInit : function(elem){
+          //Parameter elem pointing to $("#owl-demo")
+          random(elem);
+        }
+     
+      });
+     
+});
+
+// Slideshow product
+
+$(document).ready(function() {
+     
+      //Sort random function
+      function random(owlSelector){
+        owlSelector.children().sort(function(){
+            return Math.round(Math.random()) - 0.5;
+        }).each(function(){
+          $(this).appendTo(owlSelector);
+        });
+      }
+     
+      $(".owl-demo-product").owlCarousel({
+        navigation: false,
         navigationText: [
           "<i class='fa fa-chevron-left icon-white'></i>",
           "<i class='fa fa-chevron-right icon-white'></i>"
