@@ -172,7 +172,7 @@ class UserManager
 		{
 			$query = "SELECT * FROM user WHERE id='".$_SESSION['id']."'";
 			// $res = mysqli_query($this->db, $query);
-			$res = $db->query($query);
+			$res = $this->db->query($query);
 			if ($res)
 			{
 				// $user = mysqli_fetch_object($res, "User");
