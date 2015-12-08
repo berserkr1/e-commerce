@@ -74,22 +74,7 @@
 			}
 		}
 	}
-
-// Pages de défaut
-	else
-	{
-		if (isset($_SESSION['id']))
-		{
-			header('Location: ?page=home');
-			exit;
-		}
-		else
-		{
-			header('Location: ?page=login');
-			exit;
-		}
-	}
-
+	
 	require('apps/skel.php');
 
 	/* TURN OFF SESSION SUCCESS*/
