@@ -81,12 +81,12 @@ class User
 			}
 			else
 			{
-				return "Les mots de passe ne correspondent pas";
+				throw new Exception("Les mots de passe ne correspondent pas");
 			}
 		}
 		else
 		{
-			return "Mot de passe trop court";
+			throw new Exception("Mot de passe trop court");
 		}
 	}
 	public function verifPassword($password)
