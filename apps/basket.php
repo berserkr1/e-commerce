@@ -1,3 +1,3 @@
-<?php 
-require('views/basket.phtml');
- ?>
+<?php
+	require('views/basket.phtml');
+?>
