@@ -4,7 +4,7 @@
 	<p><strong>Name : </strong><?=$currentUser->getName()?></p>
 	<p><strong>Surname : </strong><?=$currentUser->getSurname()?></p>
 	<p><strong>Birth date : </strong><?=$currentUser->getDateBirth()?></p>
-	<button class="btn btn-default"><a href="?page=edit_profil.php">Edit informations</a></button>
+	<button class="btn btn-default"><a href="?page=edit_profil&amp;id=<?=$_SESSION['id']?>">Edit informations</a></button>
 </div>
 <div class="col-md-6 col-sm-6">
 	<h2>Shipping informations</h2>
@@ -19,7 +19,7 @@
 	<p><strong>City : </strong><?=$bill_city?></p>
 	<p><strong>Region : </strong><?=$bill_region?></p>
 	<p><strong>Country : </strong><?=$bill_country?></p>
-	<button class="btn btn-default"><a href="?page=edit_address.php">Edit informations</a></button>
+	<button class="btn btn-default"><a href="?page=edit_address&amp;id=<?=$_SESSION['id']?>">Edit informations</a></button>
 </div>
 
 

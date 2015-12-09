@@ -99,7 +99,7 @@ class UserManager
 		$date_birth = $user->getDateBirth();
 		$query = "UPDATE user SET login=".$login.", password=".$password.", email=".$email.", name=".$name.", surname=".$surname.", date_birth=".$date_birth." WHERE id=".$id."";
 		// $res = mysqli_query($this->db, $query);
-		$res = $db->exec($query);
+		$res = $this->db->exec($query);
 		if ($res)
 		{
 			return $this->findById($id);
