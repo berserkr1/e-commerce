@@ -1,0 +1,17 @@
+<hr/>
+<h3>Créer une nouvelle catégorie</h3>
+<form method="post" action="?page=category&amp;id=<?=$db->lastInsertId()?>" role="form">
+	<div class="form-group">
+		<label for="image">Image</label>
+		<input type="url" name="image" placeholder="500x500, 25Ko max." id="image" class="form-control" required>
+	</div>
+	<div class="form-group">
+		<label for="create_name" class="control-label">Name :</label>
+		<input type="text" class="form-control" name="create_name" id="create_name" value="<?=  (isset($created_name)) ? htmlentities($created_name) : "" ;?>" required>
+	</div>
+	<div class="form-group">
+		<label for="create_message" class="control-label">Description :</label>
+		<textarea name="create_message" id="create_message" class="form-control" cols="30" rows="10" required><?=  (isset($created_message)) ? htmlentities($created_message) : ""; ?></textarea>
+	</div>		
+	<button type="submit" class="btn btn-primary pull-right">Ajouter</button>
+</form>
