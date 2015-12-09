@@ -1,5 +1,24 @@
 <?php
 
+if (isset($_POST['category_name'], $_POST['category_banner'], $_POST['category_description']))
+{
+	$categoryManager = new CategoryManager($db);
+	$category = $categoryManager->create($_POST['category_name'], $_POST['category_description'], $_POST['category_banner']);
+	if (is_array($category))
+	{
+		$errors = array_merge($errors, $category);
+		$category_name = $_POST['category_name'];
+		$category_banner = $_POST['category_banner'];
+		$category_description = $_POST['category_description'];
+	}
+	else
+	{
+		$_SESSION['success'] = "Catégorie créée avec succès";
+		header('Location: ?page=category&amp;id=' .$category->getIdCategory());
+		exit;
+	}
+}
+
 if (isset($_POST['subCategory_name'], $_POST['subCategory_banner'], $_POST['subCategory_description']))
 {
 	$CategoryManager = new CategoryManager($db);
@@ -16,7 +35,7 @@ if (isset($_POST['subCategory_name'], $_POST['subCategory_banner'], $_POST['subC
 	else
 	{
 		$_SESSION['success'] = "Sous-catégorie créée avec succès";
-		header('Location: ?page=category&id='.$subCategory->getIdCategory());
+		header('Location: ?page=sub_category&amp;id='.$subCategory->getIdsub_Category());
 		exit;
 	}
 }
