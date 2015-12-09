@@ -74,14 +74,14 @@ class CategoryManager
 			}
 		}
 
-	public function findById($id)
+	public function findByIdCategory($id)
 		{
 			$id	= intval($id);
-			$query = "SELECT * FROM category WHERE id='".$id."'";
-			$res = mysqli_query($this->db, $query);			
+			$query = "SELECT * FROM category WHERE id=".$id;
+			$res = $this->db->query($query);			
 			if ($res)
 			{
-				if ($category = mysqli_fetch_object($res, "Category", array($this->db)))
+				if ($category = $res->fetchObject("Category", array($this->db)))
 				{
 					return $category;
 				}

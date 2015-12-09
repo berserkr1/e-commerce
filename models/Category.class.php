@@ -34,7 +34,7 @@ class Category extends SubCategoryManager
 	{
 		if (strlen($name) > 1 && strlen($name) < 32)
 		{
-			$this -> name = $name;
+			$this->name = $name;
 			return true;
 		}
 		else
@@ -46,7 +46,7 @@ class Category extends SubCategoryManager
 	{
 		if (strlen($description) > 1 && strlen($description) < 512)
 		{
-			$this -> description = $description;
+			$this->description = $description;
 			return true;
 		}
 		else
@@ -62,13 +62,13 @@ class Category extends SubCategoryManager
 			{
 				return "Invalid image dimensions (max 400x400 px)";
 			}
-			else if (@filesize($image) > 1e6)
+			else if (@filesize($img) > 1e6)
 			{
 				return "Invalid image size (max 25 kB)";
 			}
 			else
 			{
-				$this -> image = $image;
+				$this->image = $img;
 				return true;
 			}
 		}

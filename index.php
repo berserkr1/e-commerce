@@ -35,8 +35,8 @@
 	
 	// Traitements
 	$traitements_public = array('product'=>'product', 'basket'=>'basket', 'register'=>'user', 'login'=>'user');
-	$traitements_user = array('product'=>'product', 'basket'=>'basket', 'profil'=>'user', 'logout'=>'user', 'edit_profil'=>'user', 'edit_address'=>'user');
-	$traitements_admin = array('create_category'=>'sections', 'create_sub_category'=>'sections', 'create_product'=>'product', 'product'=>'product', 'basket'=>'basket', 'profil'=>'user', 'logout'=>'user', 'dashboard_user'=>'user', 'dashboard_message'=>'message', 'dashboard_order'=>'order', 'edit_profil'=>'user', 'edit_address'=>'user');
+	$traitements_user = array('product'=>'product','product'=>'message', 'basket'=>'basket', 'profil'=>'user', 'logout'=>'user', 'edit_profil'=>'user', 'edit_address'=>'user');
+	$traitements_admin = array('create_category'=>'sections', 'create_sub_category'=>'sections', 'create_product'=>'product', 'product'=>'product','product'=>'message', 'basket'=>'basket', 'profil'=>'user', 'logout'=>'user', 'dashboard_user'=>'user', 'dashboard_message'=>'message', 'dashboard_order'=>'order', 'edit_profil'=>'user', 'edit_address'=>'user');
 
 
 	$page = 'home';
