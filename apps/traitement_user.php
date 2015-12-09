@@ -84,7 +84,7 @@ if (isset($_GET['page']))
 			else
 			{
 				$user = $retour;
-				header('Location: index.php?page=profil&id='.$user->getId().'');
+				header('Location: index.php?page=profil&id='.$currentUser->getId().'');
 				exit;
 			}
 
