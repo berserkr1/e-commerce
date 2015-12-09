@@ -31,12 +31,12 @@
 	// Pages
 	$access_public = array('404', 'home', 'category', 'subcategory', 'list-product', 'product', 'basket', 'register', 'login');
 	$access_user = array('404', 'home', 'category', 'subcategory', 'list-product', 'product', 'basket',  'profile', 'logout');
-	$access_admin = array('404', 'home', 'category', 'subcategory', 'create_product', 'list-product', 'product', 'basket', 'profile', 'logout', 'dashboard_user', 'dashboard_message', 'dashboard_sections', 'dashboard_order');
+	$access_admin = array('404', 'home', 'category', 'subcategory', 'create_product', 'list-product', 'product', 'basket', 'profil', 'logout', 'dashboard_user', 'dashboard_message', 'dashboard_sections', 'dashboard_order');
 	
 	// Traitements
 	$traitements_public = array('product'=>'product', 'basket'=>'basket', 'register'=>'user', 'login'=>'user');
 	$traitements_user = array('product'=>'product', 'basket'=>'basket', 'profile'=>'user', 'logout'=>'user');
-	$traitements_admin = array('create_product'=>'product', 'product'=>'product', 'basket'=>'basket', 'profile'=>'user', 'logout'=>'user', 'dashboard_user'=>'user', 'dashboard_message'=>'message', 'dashboard_sections'=>'sections', 'dashboard_order'=>'order');
+	$traitements_admin = array('create_product'=>'product', 'product'=>'product', 'basket'=>'basket', 'profil'=>'user', 'logout'=>'user', 'dashboard_user'=>'user', 'dashboard_message'=>'message', 'dashboard_sections'=>'sections', 'dashboard_order'=>'order');
 
 	$page = 'home';
 	$errors = array();
