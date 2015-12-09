@@ -45,8 +45,8 @@ class UserManager
 			// $name = mysqli_real_escape_string($this->db, $user->getName());
 			$name = $this->db->quote($user->getName());
 			$surname = $this->db->quote($user->getSurname());
-			$date_birth = $user->getDateBirth();
-			$query = "INSERT INTO user (login, password, email, name, surname, date_birth) VALUES(".$login.", '".$password."', ".$email.", ".$name.", ".$surname.", '".$date_birth."')";
+			$date_birth = $this->db->quote($user->getDateBirth());
+			$query = "INSERT INTO user (login, password, email, name, surname, date_birth) VALUES(".$login.", '".$password."', ".$email.", ".$name.", ".$surname.", ".$date_birth.")";
 			// $res = mysqli_query($this->db, $query);
 			$res = $this->db->exec($query);
 			if ($res)
@@ -97,7 +97,7 @@ class UserManager
 		// $surname = mysqli_real_escape_string($this->db, $user->getSurname());
 		$surname = $this->db->quote($user->getSurname());
 		$date_birth = $user->getDateBirth();
-		/*/!\*/$query = "UPDATE user SET login='".$login."', password='".$password."', email='".$email."', name='".$name."', surname='".$surname."', date_birth='".$date_birth."' WHERE id='".$id."'";
+		$query = "UPDATE user SET login=".$login.", password=".$password.", email=".$email.", name=".$name.", surname=".$surname.", date_birth=".$date_birth." WHERE id=".$id."";
 		// $res = mysqli_query($this->db, $query);
 		$res = $db->exec($query);
 		if ($res)
@@ -195,37 +195,6 @@ class UserManager
 		{
 			return false;
 		}
-	}
-	public function getNbPost($id)
-	{
-		$postManager = new PostManager($this->db);
-		$postList = $postManager->findByIdAuthor($id);
-		if ($postList)
-		{
-			if (is_string($postList))
-			{
-				$errors[] = $postList;
-				return $errors;
-			}
-			else
-			{
-				$postNb = count($postList);
-				if ( $postNb == NULL )
-				{
-					$postNb = 0;
-					return $postNb;
-				}
-				else
-				{
-					return $postNb;
-				}
-			}
-		}
-		else
-		{
-			return "Pas de messages postés";
-		}
-
 	}
 }
 ?>
