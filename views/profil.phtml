@@ -1,24 +1,24 @@
-<h1 class="login"><?=$user->getLogin()?></h1><small>Registered on : <?=$user->getDateRegister()?></small>
+<h1 class="login"><?=$currentUser->getLogin()?></h1><small>Registered on : <?=$currentUser->getDateRegister()?></small>
 <div class="col-md-6 col-sm-6">
-	<p><strong>Email : </strong><?=$user->getEmail()?></p>
-	<p><strong>Name : </strong><?=$user->getMail()?></p>
-	<p><strong>Surname : </strong><?=$user->getSurname()?></p>
-	<p><strong>Birth date : </strong><?=$user->getDateBirth()?></p>
+	<p><strong>Email : </strong><?=$currentUser->getEmail()?></p>
+	<p><strong>Name : </strong><?=$currentUser->getName()?></p>
+	<p><strong>Surname : </strong><?=$currentUser->getSurname()?></p>
+	<p><strong>Birth date : </strong><?=$currentUser->getDateBirth()?></p>
 	<button class="btn btn-default"><a href="?page=edit_profil.php">Edit informations</a></button>
 </div>
 <div class="col-md-6 col-sm-6">
 	<h2>Shipping informations</h2>
-	<p><strong>Address : </strong><?=$user->getShipAddress()?></p>
-	<p><strong>Postal code : </strong><?=$user->getShipPostalCode()?></p>
-	<p><strong>City : </strong><?=$user->getShipCity()?></p>
-	<p><strong>Region : </strong><?=$user->getShipRegion()?></p>
-	<p><strong>Country : </strong><?=$user->getShipCountry()?></p>
+	<p><strong>Address : </strong><?=$ShipAddress()?></p>
+	<p><strong>Postal code : </strong><?=$ShipPostalCode()?></p>
+	<p><strong>City : </strong><?=$ShipCity()?></p>
+	<p><strong>Region : </strong><?=$ShipRegion()?></p>
+	<p><strong>Country : </strong><?=$ShipCountry()?></p>
 	<h2>billing informations</h2>
-	<p><strong>Address : </strong><?=$user->getBillAddress()?></p>
-	<p><strong>Postal code : </strong><?=$user->getBillPostalCode()?></p>
-	<p><strong>City : </strong><?=$user->getBillCity()?></p>
-	<p><strong>Region : </strong><?=$user->getBillRegion()?></p>
-	<p><strong>Country : </strong><?=$user->getBillCountry()?></p>
+	<p><strong>Address : </strong><?=$BillAddress()?></p>
+	<p><strong>Postal code : </strong><?BillPostalCode()?></p>
+	<p><strong>City : </strong><?=$BillCity()?></p>
+	<p><strong>Region : </strong><?=$BillRegion()?></p>
+	<p><strong>Country : </strong><?=$BillCountry()?></p>
 	<button class="btn btn-default"><a href="?page=edit_address.php">Edit informations</a></button>
 </div>
 

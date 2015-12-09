@@ -109,7 +109,7 @@ class AddressManager
 		$id_user = intval($id_user);
 		$userManager= new UserManager ($this->db);
 		$query = "SELECT * FROM address WHERE id_user=".$id_user;
-		$res = $this->db-> query($query);
+		$res = $this->db->query($query);
 
 		if($res)
 		{
