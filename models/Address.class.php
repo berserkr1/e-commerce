@@ -14,10 +14,10 @@ class Address
 	private $bill_country;
 	private $bill_region;
 
-	public function __construct($db);
-	{
-		$this->db = $db;
-	}
+	// public function __construct($db);
+	// {
+	// 	$this->db = $db;
+	// }
 
 	public function getId()
 	{
@@ -68,14 +68,9 @@ class Address
 		return $this->bill_region;
 	}
 
-	public function setId()
+	public function setIdUser($id_user)
 	{
-		$this->id = $id;
-		return true;
-	}
-	public function setIdUser()
-	{
-		$this->id = $id_user;
+		$this->id_user = $id_user;
 		return true;
 	}
 	public function setShipAddress()
@@ -128,6 +123,7 @@ class Address
 		$this->id = $bill_region;
 		return true;
 	}
+
 }
 }
  ?>

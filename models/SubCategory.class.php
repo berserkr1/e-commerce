@@ -1,14 +1,16 @@
 <?php 
-class SubCategory
+class SubCategory extends ProductManager
 {
 	private $id;
 	private $id_category;
+	private $category;
 	private $name;
 	private $description;
 	private $img;
 
-	public function __construct($db);
+	public function __construct($db)
 	{
+		parent::__construct($db);
 		$this->db = $db;
 	}
 
@@ -19,6 +21,21 @@ class SubCategory
 	public function getIdCategory()
 	{
 		return $this->id_category;
+	}
+	public function getCategory()
+	{
+		if (!$this->category)
+		{
+			$id_category = intval($this->id_category);
+			$query = 'SELECT * FROM category WHERE id ='.$id_category;
+			$res = mysqli_query($this->db, $query);
+
+			if ($res && ($category = mysqli_fetch_object($res, 'Category', array($this->db))))
+			{
+				$this->category = $category;
+			}
+		}
+		return $this->category;
 	}
 	public function getName()
 	{
@@ -33,30 +50,60 @@ class SubCategory
 		return $this->img;
 	}
 
-	public function setId()
+	public function setCategory(Category $category)
 	{
-		$this->id = $id;
+		$this->category	= $category;
+		$this->id_category = $category->getId();
 		return true;
 	}
-	public function setIdCategory()
+	public function setName($name)
 	{
-		$this->id_category = $id_category;
-		return true;
+		if (strlen($name) > 1)
+		{
+			$this->name = $name;
+			return true;
+		}
+		else
+		{
+			return "Nom trop court";
+		}
+		
 	}
-	public function setName()
+	public function setDescription($description)
 	{
-		$this->name = $name;
-		return true;
+		if (strlen($description) > 1)
+		{
+			$this->description = $description;
+			return true;
+		}
+		else
+		{
+			return "Description trop courte";
+		}
+		
 	}
-	public function setDescription()
+	public function setImg($img)
 	{
-		$this->description = $description;
-		return true;
-	}
-	public function setImg()
-	{
-		$this->img = $img;
-		return true;
+		if ($image_proprietes = @getimagesize($image))
+		{
+			if ($image_proprietes[0] > 500 || $image_proprietes[1] > 500)
+			{
+				return "Invalid image dimensions (max 500x500 px)";
+			}
+			else if (@filesize($img) > 1e6)
+			{
+				return "Invalid image size (max 25 kB)";
+			}
+			else
+			{
+				$this->img = $img;
+				return true;
+			}
+		}
+		else
+		{
+			return "Invalid filetype";
+		}
 	}
 }
  ?>

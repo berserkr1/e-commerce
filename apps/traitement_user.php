@@ -28,6 +28,9 @@ if (isset($_GET['page']))
 			}
 		}
 	}
+
+	//------------------------------------------------------------------------------------------------
+
 	else if ($action == 'register')
 	{
 		if (isset($_POST['login'], $_POST['password1'], $_POST['password2'], $_POST['email'], $_POST['name'], $_POST['surname'], $_POST['date_birth']))
@@ -49,6 +52,9 @@ if (isset($_GET['page']))
 			}
 		}
 	}
+
+	//------------------------------------------------------------------------------------------------
+
 	else if ($action == 'logout')
 	{
 		session_destroy();
@@ -56,6 +62,9 @@ if (isset($_GET['page']))
 		header('Location: index.php');
 		exit;
 	}
+
+	//------------------------------------------------------------------------------------------------
+
 	else if ($action == 'edit_profil')
 	{
 		if (isset($_POST['login'], $_POST['email'], $_POST['password1'], $_POST['password2'], $_POST['name'], $_POST['surname'], $_POST['date_birth']))
@@ -82,5 +91,71 @@ if (isset($_GET['page']))
 		}
 
 	}
+
+	//------------------------------------------------------------------------------------------------
+
+	else if ($action == 'edit_address')
+	{
+		if (isset($_POST['ship_address'], $_POST['ship_city'], $_POST['ship_postal_code'], $_POST['ship_region'], $_POST['ship_country'], $_POST['bill_address'], $_POST['bill_city'], $_POST['bill_postal_code'], $_POST['bill_region'], $_POST['bill_country']))
+		{
+			$addressManager = new AddressManager($db);
+			$userManager = new UserManager($db);
+			try
+			{
+				$retour = $addressManager->findByIdUser($currentUser->getId());
+			}
+			catch(Exception $e)
+			{
+				$retour = $e->getMessage();
+			}
+			
+			if (is_string($retour))
+			{
+				$retour=$addressManager->create($_POST['ship_address'], $_POST['ship_city'], $_POST['ship_postal_code'], $_POST['ship_region'], $_POST['ship_country'], $_POST['bill_address'], $_POST['bill_city'], $_POST['bill_postal_code'], $_POST['bill_region'], $_POST['bill_country']);
+				if (is_string($retour))
+				{
+					$errors = array_merge($errors, $retour);
+				}
+				else
+				{
+					header('Location: index.php?page=login');
+					exit;
+				}
+			}
+			
+			else
+			{
+				$address = new Address();
+
+				$address->setShipAddress($_POST['ship_address']);
+				$address->setShipCity($_POST['ship_city']);
+				$address->setShipPostalCode($_POST['ship_postal_code']);
+				$address->setShipRegion($_POST['ship_region']);
+				$address->setShipCountry($_POST['ship_country']);
+				$address->setBillAddress($_POST['bill_address']);
+				$address->setBillCity($_POST['bill_city']);
+				$address->setBillPostalCode($_POST['bill_postal_code']);
+				$address->setBillRegion($_POST['bill_region']);
+				$address->setBillCountry($_POST['bill_country']);
+
+				$retour=$addressManager->update($_POST['ship_address'], $_POST['ship_city'], $_POST['ship_postal_code'], $_POST['ship_region'], $_POST['ship_country'], $_POST['bill_address'], $_POST['bill_city'], $_POST['bill_postal_code'], $_POST['bill_region'], $_POST['bill_country']);
+				
+				if (is_array($retour))
+				{
+					$errors = array_merge($errors, $retour);
+				}
+				else
+				{
+					$user = $retour;
+					header('Location: index.php?page=profil&id='.$user->getId().'');
+					exit;
+				}
+
+			}
+				
+		}
+
+	}
+
 }
 ?>
