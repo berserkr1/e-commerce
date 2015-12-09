@@ -1,0 +1,30 @@
+<div class="comment-wrapper col-xs-12">
+    <div class="comment-body col-xs-12 col-sm-10 col-md-10 col-lg-11">
+        <p class="comment-infos text-left">
+            <span class="comment-author">
+                <strong>
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 
+                    <!--<a href="?page=user&amp;id=<?= $message->getUser()->getId(); ?>">-->
+                        <?= htmlentities($message->getUser()->getLogin()); ?>
+                    <!--</a>-->
+                </strong>
+            </span>
+            -
+            <span class="comment-datePurchase">
+                <em>
+                    <?= "Acheté le ".date("D j F Y", strtotime($message->getOrder->getDatePaid())); ?>
+                </em>
+            </span>
+            <span class="comment-rate">
+                <strong>
+                    <?= htmlentities($message->getRate())."/10"; ?>
+                </strong>
+            </span>
+        </p>
+
+        <p class="comment-content">
+            <!--nl2br insère un retour ligne HTML à chaque ligne-->
+            <?= nl2br(htmlentities($message->getContent())); ?>
+        </p>
+    </div>
+</div>

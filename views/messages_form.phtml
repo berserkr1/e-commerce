@@ -1,0 +1,12 @@
+<hr/>
+<form method="post" action="">
+	<input type="hidden" value="create" name="action">
+	<div class="form-group">
+		<label for="create_message" class="control-label">Message:</label>
+		<textarea name="create_message" id="create_message" class="form-control" cols="30"
+				  rows="10" required><?=  (isset($created_message)) ? htmlentities($created_message) : ""; ?></textarea>
+	</div>
+	<div class="form-group text-right">
+		<button class="btn btn-primary " type="submit">Send</button>
+	</div>
+</form>
