@@ -8,7 +8,7 @@ class SubCategory extends ProductManager
 	private $description;
 	private $img;
 
-	public function __construct($db);
+	public function __construct($db)
 	{
 		parent::__construct($db);
 		$this->db = $db;
