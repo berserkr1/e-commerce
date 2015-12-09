@@ -1,5 +1,19 @@
 <?php 
 $categoryManager = new CategoryManager($db);
-$category = $categoryManager->findByIdCategory($_GET['id']);
-require('views/category.phtml');
+try
+{
+	$category = $categoryManager->findById($_GET['id']);
+}
+catch (Exception $e)
+{
+	$category = $e->getMessage();
+}
+if (!is_string($category))
+{
+	require('views/category.phtml');
+}
+else
+{
+	echo ("Nothing to show");
+}
  ?>
