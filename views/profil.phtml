@@ -1,4 +1,4 @@
-<h1 class="login"><?=$currentUser->getLogin()?></h1><small>Registered on : <?=$currentUser->getDateRegister()?></small>
+<h1 class="login"><?=$currentUser->getLogin()?><small> Registered on : <?=$currentUser->getDateRegister()?></small></h1>
 <div class="col-md-6 col-sm-6">
 	<p><strong>Email : </strong><?=$currentUser->getEmail()?></p>
 	<p><strong>Name : </strong><?=$currentUser->getName()?></p>
@@ -8,17 +8,17 @@
 </div>
 <div class="col-md-6 col-sm-6">
 	<h2>Shipping informations</h2>
-	<p><strong>Address : </strong><?=$ShipAddress()?></p>
-	<p><strong>Postal code : </strong><?=$ShipPostalCode()?></p>
-	<p><strong>City : </strong><?=$ShipCity()?></p>
-	<p><strong>Region : </strong><?=$ShipRegion()?></p>
-	<p><strong>Country : </strong><?=$ShipCountry()?></p>
-	<h2>billing informations</h2>
-	<p><strong>Address : </strong><?=$BillAddress()?></p>
-	<p><strong>Postal code : </strong><?BillPostalCode()?></p>
-	<p><strong>City : </strong><?=$BillCity()?></p>
-	<p><strong>Region : </strong><?=$BillRegion()?></p>
-	<p><strong>Country : </strong><?=$BillCountry()?></p>
+	<p><strong>Address : </strong><?=$ship_address?></p>
+	<p><strong>Postal code : </strong><?=$ship_postal_code?></p>
+	<p><strong>City : </strong><?=$ship_city?></p>
+	<p><strong>Region : </strong><?=$ship_region?></p>
+	<p><strong>Country : </strong><?=$ship_country?></p>
+	<h2>Billing informations</h2>
+	<p><strong>Address : </strong><?=$bill_address?></p>
+	<p><strong>Postal code : </strong><?$bill_postal_code?></p>
+	<p><strong>City : </strong><?=$bill_city?></p>
+	<p><strong>Region : </strong><?=$bill_region?></p>
+	<p><strong>Country : </strong><?=$bill_country?></p>
 	<button class="btn btn-default"><a href="?page=edit_address.php">Edit informations</a></button>
 </div>
 
