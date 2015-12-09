@@ -30,27 +30,51 @@ class SubCategoryManager
 			$description = mysqli_escape_string($this->db, $sub_category>getDescription());
 			$img = mysqli_escape_string($this->db, $sub_category->getImg());
 			$query	= "INSERT INTO sub_category (id_category, name, description, img) VALUES ('".$idCategory."', '".$name."', '".$description."', '".$img."')";
-			$res = mysqli_query($this->db, $query);
+			$res = $this->db->exec($query);
 			if ($res)
 			{
-				$id = mysqli_insert_id($this->db);
+				$id = $this->db->lastInsertId();
 				if ($id)
 				{
-					return $this->readById($id);
+					return $this->findById($id);
 				}
 				else
 				{
-					return "Internal server error";
+					throw new Exception ("Internal server error");
 				}
-			}
-			else
-			{
-				return mysqli_error($this->db);
-			}
+			}			
 		}
 		else
 		{
 			return $errors;
+		}
+	}
+
+	public function read($n = 0)
+	{
+		$n = intval($n);
+		
+		if ($n > 0)
+		{
+			$query = 'SELECT * FROM sub_category ORDER BY `name` ASC LIMIT '.$n;
+		}
+		else
+		{
+			$query = 'SELECT * FROM sub_category ORDER BY `name` ASC';
+		}		
+		$res = $this->db->query($query);
+		if ($res)
+		{
+			$sub_category = array();
+			while ($sub_category = $res->fetchObject('SubCategory', array($this->db)))
+			{
+				$sub_category[] = $sub_category;
+			}
+			return $sub_category;
+		}
+		else
+		{
+			return 'Database error';
 		}
 	}
 }
