@@ -21,17 +21,17 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="?page=profil.php" class="user"><i class="fa fa-user fa-2x"></i></a>
+          <a href="?page=profil&amp;id=<?=$_SESSION['id']?>" class="user"><i class="fa fa-user fa-2x"></i></a>
         </li>
         <li>
-          <a href="?page=basket.php" class="user"><i class="fa fa-shopping-cart fa-2x"></i></a>
+          <a href="?page=basket&amp;id=<?=$_SESSION['id']?>" class="user"><i class="fa fa-shopping-cart fa-2x"></i></a>
         </li>
        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bonjour <span class="login"><?=htmlentities($currentUser->getLogin()); ?></span><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <a href="?page=profil&amp;id=<?=$_SESSION['id']?>" class="lien-profil">Voir mon profil</a> 
             <li role="separator" class="divider"></li>
-             <button class="btn btn-default"><a href="?page=logout&amp;action=logout" class="aNav">Logout</a></button>
+             <button class="btn btn-default"><a href="?page=logout" class="aNav">Logout</a></button>
           </ul>
         </li>
       </ul>

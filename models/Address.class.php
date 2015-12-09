@@ -73,57 +73,56 @@ class Address
 		$this->id_user = $id_user;
 		return true;
 	}
-	public function setShipAddress()
+	public function setShipAddress($ship_address)
 	{
 		$this->id = $ship_address;
 		return true;
 	}
-	public function setShipCity()
+	public function setShipCity($ship_city)
 	{
 		$this->id = $ship_city;
 		return true;
 	}
-	public function setShipPostalCode()
+	public function setShipPostalCode($ship_postal_code)
 	{
 		$this->id = $ship_postal_code;
 		return true;
 	}
-	public function setShipRegion()
+	public function setShipRegion($ship_region)
 	{
 		$this->id = $ship_region;
 		return true;
 	}
-	public function setShipCountry()
+	public function setShipCountry($ship_country)
 	{
 		$this->id = $ship_country;
 		return true;
 	}
-	public function setBillAddress()
+	public function setBillAddress($bill_address)
 	{
 		$this->id = $bill_address;
 		return true;
 	}
-	public function setBillCity()
+	public function setBillCity($bill_city)
 	{
 		$this->id = $bill_city;
 		return true;
 	}
-	public function setBillPostalCode()
+	public function setBillPostalCode($bill_postal_code)
 	{
 		$this->id = $bill_postal_code;
 		return true;
 	}
-	public function setBillCountry()
+	public function setBillCountry($bill_country)
 	{
 		$this->id = $bill_country;
 		return true;
 	}
-	public function setBillRegion()
+	public function setBillRegion($bill_region)
 	{
 		$this->id = $bill_region;
 		return true;
 	}
 
-}
 }
  ?>
