@@ -81,7 +81,8 @@ class CategoryManager
 			$res = $this->db->query($query);			
 			if ($res)
 			{
-				if ($category = $res->fetchObject("Category", array($this->db)))
+				$category = $res->fetchObject("Category", array($this->db));
+				if ($category)
 				{
 					return $category;
 				}
