@@ -1,0 +1,40 @@
+<div class="row centered-form">
+  <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Enregistrez votre compte</h3>
+        </div>
+        <div class="panel-body">
+          <form action="?page=register" method="post">
+            <div class="form-group input-register">
+              <input type="text" class="form-control" name="login" id="login" placeholder="Login" value="<?=htmlentities($login)?>" >
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6 col-sm-6 input-register">
+                <input type="password" class="form-control" name="password1" id="password1" placeholder="Password">
+              </div>
+              <div class="form-group col-md-6 col-sm-6 input-register">
+                <input type="password" class="form-control" name="password2" id="password2" placeholder="Retype password">
+              </div>
+            </div>
+            
+            <div class="form-group input-register">
+              <input type="email" class="form-control" name="email" id="Email" placeholder="Email" value="<?=htmlentities($email)?>">
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6 col-sm-6 input-register">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="<?=htmlentities($name)?>">
+              </div>
+              <div class="form-group col-md-6 col-sm-6 input-register">
+                <input type="text" class="form-control" name="surname" id="surname" placeholder="Surname" value="<?=htmlentities($surname)?>">
+              </div>
+            </div>
+            <div class="form-group input-register">
+              <input class="input-register form-control" type="text" name="date_birth" placeholder="dd-mm-yyyy" value="<?=htmlentities($date_birth)?>">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

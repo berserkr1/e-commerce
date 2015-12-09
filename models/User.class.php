@@ -11,10 +11,10 @@ class User
 	private $date_birth;
 	private $date_register;
 
-	public function __construct($db);
-	{
-		$this->db = $db;
-	}
+	// public function __construct($db);
+	// {
+	// 	$this->db = $db;
+	// }
 
 	public function getId()
 	{
@@ -24,7 +24,7 @@ class User
 	{
 		return $this->login;
 	}
-	public function getPassword()
+	public function getHash()
 	{
 		return $this->password;
 	}
@@ -58,37 +58,83 @@ class User
 		$this->id = $id;
 		return true;
 	}
-	public function setLogin()
+	public function setLogin($login)
 	{
-		$this->login = $login;
-		return true;
+		if (strlen($login) > 1 && strlen($login) < 16)
+		{
+			$this -> login = $login;
+			return true;
+		}
+		else
+		{
+			throw new Exception("Invalid login");
+		}
 	}
-	public function setPassword()
+	public function setPassword($password1, $password2)
 	{
-		$this->password = $password;
-		return true;
+		if (strlen($password1) > 5)
+		{
+			if ($password1 == $password2)
+			{
+				$this->password = password_hash($password1, PASSWORD_BCRYPT, array("cost"=>10));
+				return true;
+			}
+			else
+			{
+				throw new Exception("Les mots de passe ne correspondent pas");
+			}
+		}
+		else
+		{
+			throw new Exception("Mot de passe trop court");
+		}
+	}
+	public function verifPassword($password)
+	{
+		return (password_verify($password, $this->password));
 	}
 	public function setStatus()
 	{
 		$this->status = $status;
 		return true;
 	}
-	public function setEmail()
+	public function setEmail($email)
 	{
-		$this->email = $email;
-		return true;
+		if (strlen($email) > 1 && strlen($email) < 32)
+		{
+			$this -> email = $email;
+			return true;
+		}
+		else
+		{
+			throw new Exception("Invalid email");
+		}
 	}
-	public function setName()
+	public function setName($name)
 	{
-		$this->name = $name;
-		return true;
+		if (strlen($name) > 1 && strlen($name) < 32)
+		{
+			$this -> name = $name;
+			return true;
+		}
+		else
+		{
+			throw new Exception("Invalid name");
+		}
 	}
-	public function setSurname()
+	public function setSurname($surname)
 	{
-		$this->surname = $surname;
-		return true;
+		if (strlen($surname) > 1 && strlen($surname) < 32)
+		{
+			$this -> surname = $surname;
+			return true;
+		}
+		else
+		{
+			throw new Exception("Invalid surname");
+		}
 	}
-	public function setDateBirth()
+	public function setDateBirth($date_birth)
 	{
 		$this->date_birth = $date_birth;
 		return true;

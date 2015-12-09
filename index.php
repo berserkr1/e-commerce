@@ -24,16 +24,19 @@
 		$_SESSION['visiteur'] = true;
 	}
 
+// Init constantes
+	require('init_const.php');
+
 // ________ HUB ________
 	// Pages
-	$access_public = array('404', 'home', 'category', 'subcategory', 'product', 'basket', 'register', 'login');
-	$access_user = array('404', 'home', 'category', 'subcategory', 'product', 'basket',  'profile', 'logout');
-	$access_admin = array('404', 'home', 'category', 'subcategory', 'product', 'basket', 'profile', 'logout', 'dashboard_user', 'dashboard_product', 'dashboard_message', 'dashboard_sections', 'dashboard_order');
+	$access_public = array('404', 'home', 'category', 'subcategory', 'list-product', 'product', 'basket', 'register', 'login');
+	$access_user = array('404', 'home', 'category', 'subcategory', 'list-product', 'product', 'basket',  'profile', 'logout');
+	$access_admin = array('404', 'home', 'category', 'subcategory', 'create_product', 'list-product', 'product', 'basket', 'profile', 'logout', 'dashboard_user', 'dashboard_message', 'dashboard_sections', 'dashboard_order');
 	
 	// Traitements
 	$traitements_public = array('product'=>'product', 'basket'=>'basket', 'register'=>'user', 'login'=>'user');
 	$traitements_user = array('product'=>'product', 'basket'=>'basket', 'profile'=>'user', 'logout'=>'user');
-	$traitements_admin = array('product'=>'product', 'basket'=>'basket', 'profile'=>'user', 'logout'=>'user', 'dashboard_user'=>'user', 'dashboard_product'=>'product', 'dashboard_message'=>'message', 'dashboard_sections'=>'sections', 'dashboard_order'=>'order');
+	$traitements_admin = array('create_product'=>'product', 'product'=>'product', 'basket'=>'basket', 'profile'=>'user', 'logout'=>'user', 'dashboard_user'=>'user', 'dashboard_message'=>'message', 'dashboard_sections'=>'sections', 'dashboard_order'=>'order');
 
 	$page = 'home';
 	$errors = array();
@@ -64,7 +67,7 @@
 		}
 
 		// Pages admins
-		else if (in_array($_GET['page'], $access_admin) && isset($_SESSION['id']) && ($currentUser->getStatus()) > 0)
+		else if (in_array($_GET['page'], $access_admin) && isset($_SESSION['id']) && ($currentUser->getStatus()) == STATUS_ADMIN)
 		{
 			$page = $_GET['page'];
 
@@ -74,22 +77,7 @@
 			}
 		}
 	}
-
-// Pages de défaut
-	else
-	{
-		if (isset($_SESSION['id']))
-		{
-			header('Location: ?page=home');
-			exit;
-		}
-		else
-		{
-			header('Location: ?page=login');
-			exit;
-		}
-	}
-
+	
 	require('apps/skel.php');
 
 	/* TURN OFF SESSION SUCCESS*/
