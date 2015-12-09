@@ -32,13 +32,13 @@ class ProductManager
 		if (count($errors) == 0)
 		{
 			$idSub_category = intval($product->getIdSub_category());
-			$name = mysqli_escape_string($this->db, $product->getName());
-			$description = mysqli_escape_string($this->db, $product->getDescription());
-			$price = mysqli_escape_string($this->db, $product->getPrice());
-			$img = mysqli_escape_string($this->db, $product->getImg());
-			$stock = mysqli_escape_string($this->db, $product->getStock());
-			$query = "INSERT INTO product(id_sub_category, name, description, price, img, stock) VALUES('" . $idSub_category . "', '" . $name . "', '" . $description . "', '" . $price . "', '" . $img . "', '" . $stock . "')";
-			$res = mysqli_query($this->db->exec($query));
+			$name = $this->db->quote($product->getName());
+			$description = $this->db->quote($product->getDescription());
+			$price = $this->db->quote($product->getPrice());
+			$img = $this->db->quote($product->getImg());
+			$stock = $this->db->quote($product->getStock());
+			$query = "INSERT INTO product(id_sub_category, name, description, price, img, stock) VALUES(" . $idSub_category . ", " . $name . ", " . $description . ", " . $price . ", " . $img . ", " . $stock . ")";
+			$res = $this->db->exec($query);
 			if ($res)
 			{
 				$id = $this->db->lastInsertId();
