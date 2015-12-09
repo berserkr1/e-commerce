@@ -78,15 +78,16 @@
 			$this->id_product = $product->getId();
 			return true;
 		}
-		public function setOrder()
+		public function setOrder(Product $product)
 		{
-			$id_product = intval($this->id_product);
+			$id_product = $product->getId();
 			$query = "SELECT * FROM basket WHERE id_product =".$id_product;
 			$res = $this->db->query($query);
-			if($basket = $res->fetch(PDO::FETCH_ASSOC)) // + récente commande du produit ?
+			if ($res)
 			{
-				$id_order = intval($basket['id_order']);
-				$query = "SELECT * FROM order WHERE id =".$id_order." AND status ='1'"; // Modif statut avec constante PAID
+				$basket = $res->fetchAll();
+				$id_order = $basket[count($basket)-1]['id_order'];
+				$query = "SELECT * FROM order WHERE id =".$id_order." AND status =".STATUS_PAID;
 				$res = $this->db->query($query);
 				if ($res && ($order = $res->fetchObject("Order", array($this->db))))
 				{

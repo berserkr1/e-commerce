@@ -18,7 +18,7 @@
 
 
 		// Create function
-		public function create(User $user, Product $product, Order $order, $content, $rate)
+		public function create(User $user, Product $product, $content, $rate)
 		{
 			$message = new Message($this->db);
 			$errors = array();
@@ -26,7 +26,7 @@
 			$message -> setProduct($product);
 			try
 			{
-				$message -> setOrder();
+				$message -> setOrder($product);
 			}
 			catch (Exception $e)
 			{
@@ -55,9 +55,9 @@
 			});
 			if (count($errors) == 0)
 			{
-				$id_user = intval($message->getUser()->getId());
-				$id_product = intval($message->getProduct()->getId());
-				$id_order = intval($message->getOrder()->getId());
+				$id_user = $message->getUser()->getId();
+				$id_product = $message->getProduct()->getId();
+				$id_order = $message->getOrder()->getId();
 				$content = $this->db->quote($message->getContent());
 				$rate = $this->db->quote($message->getRate());
 				$query = 'INSERT INTO message (id_user, id_product, id_order, content, rate) VALUES ("'.$id_user.'","'.$id_product.'", "'.$id_order.'", '.$content.', '.$rate.')';
@@ -72,7 +72,8 @@
 					}
 					else
 					{
-						throw new Exception('Internal server error');
+						$errors[] = 'Internal server error';
+						return $errors;
 					}
 				}
 			}
@@ -133,6 +134,28 @@
 			else
 			{
 				throw new Exception('Error 01 : Database error');
+			}
+		}
+
+		public function findById($id)
+		{
+			$query = 'SELECT * FROM message WHERE id = '.$id;
+			$res = $this->db->query($query);
+
+			if ($res)
+			{
+				if ($message = $res->fetchObject("Message", array($this->db)))
+				{
+					return $message;
+				}
+				else
+				{
+					throw new Exception('Message not found');
+				}
+			}
+			else
+			{
+				throw new Exception('Error 02 : Database error');
 			}
 		}
 

@@ -2,26 +2,35 @@
     $content=$rate="";
 	if (isset($_POST['content'], $_POST['rate'])) 
 	{
-        $content = $_POST['create_message'];
-        $messageManager = new MessageManager($db);
-
-        $topicManager = new TopicManager($db);
-        $topic = $topicManager->readByID(intval($_GET['id']));
-        $res = $messageManager->create($currentUser, $topic, $_POST['create_message']);
-        if(is_array($res))
+        $productManager = new ProductManager($db);
+        try
         {
-            $errors = $res;
-            return $errors;
+            $retour = $productManager->findById($_GET['id']);
         }
-        elseif(is_string($res))
+        catch (Exception $e)
         {
-            $errors[] = $res;
+            $retour = $e->getMessage();
+        }
+        if (is_string($retour))
+        {
+            $errors[] = $retour;
         }
         else
         {
-            $_SESSION['success'] = "Message posté avec succès :)";
-            header('Location: ?page=topic&id='.$res->getTopic()->getId());
-            exit;
+            $retour = $product;
+            $messageManager = new MessageManager($db);
+            $retour = $messageManager->create($currentUser, $product, $_POST['content'], $_POST['rate']);
+            if(is_array($retour))
+            {
+                $errors = $retour;
+                $content = $_POST['content'];
+            }
+            else
+            {
+                $_SESSION['success'] = "Your opinion has been posted";
+                header('Location: ?page=product&id='.$product->getId());
+                exit;
+            }
         }
 	}
 ?>
