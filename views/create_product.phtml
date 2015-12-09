@@ -1,6 +1,6 @@
 <hr/>
 <h3>Ajouter un nouveau produit</h3>
-<form method="post" action="?page=home" role="form">
+<form method="post" action="?page=product&amp;id=<?=$db->lastInsertId()?>" role="form">
 	<div class="form-group">
 		<label for="image">Image</label>
 		<input type="url" name="image" placeholder="500x500, 25Ko max." id="image" class="form-control" required>
