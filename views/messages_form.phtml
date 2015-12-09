@@ -1,0 +1,15 @@
+<hr/>
+<form method="post" action="?page=product" role="form">
+	<div class="form-group">
+		<label for="message" class="control-label">Leave your opinion about this product (buyers only)</label>
+		<textarea name="content" id="message" placeholder="16 à 2046 caractères" class="form-control" cols="30"
+				  rows="10" required><?=htmlentities($content);?></textarea>
+	</div>
+	<div class="form-group">
+		<label for="rate" class="control-label">Give a rating (on 10)</label>
+		<input type="number" name="rate" id="rate" class="form-control" rows="5" required />
+	</div>
+	<div class="form-group text-right">
+		<button class="btn btn-primary" type="submit">Send</button>
+	</div>
+</form>
