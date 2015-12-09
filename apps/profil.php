@@ -13,14 +13,14 @@ if (is_object($address))
 {
 	$ship_address=$address->getShipAddress();
 	$ship_postal_code=$address->getShipPostalCode();
-	$ShipCity=$address->getShipCity();
-	$ShipRegion=$address->getShipRegion();
-	$address->getShipCountry();
-	$address->getBillAddress();
-	$address->getBillPostalCode();
-	$address->getBillCity();
-	$address->getBillRegion();
-	$address->getBillCountry();
+	$ship_city=$address->getShipCity();
+	$ship_region=$address->getShipRegion();
+	$ship_country=$address->getShipCountry();
+	$bill_address=$address->getBillAddress();
+	$bill_postal_code=$address->getBillPostalCode();
+	$bill_city=$address->getBillCity();
+	$bill_region=$address->getBillRegion();
+	$bill_country=$address->getBillCountry();
 
 }
 
