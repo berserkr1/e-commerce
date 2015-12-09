@@ -1,5 +1,5 @@
 <?php 
-class SubCategoryManager
+class Sub_CategoryManager
 {
 	private $db;
 
