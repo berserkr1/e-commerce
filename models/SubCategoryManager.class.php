@@ -100,5 +100,29 @@ class SubCategoryManager
 			throw new Exception('Error 02 : Database error');
 		}
 	}
+
+	public function findById($id)
+	{
+		$id	= intval($id);
+		$query = "SELECT * FROM sub_category WHERE id=".$id;
+		$res = $this->db->query($query);			
+		if ($res)
+		{
+			$sub_category = $res->fetchObject("SubCategory", array($this->db));
+			if ($sub_category)
+			{
+				return $sub_category;
+			}
+			else
+			{
+				throw new Exception("No match");
+			}
+		}
+		else
+		{
+			throw new Exception("Internal Server Error");
+		}
+	}
+
 }
 ?>
