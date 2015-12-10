@@ -68,7 +68,7 @@ class Category extends SubCategoryManager
 			}
 			else
 			{
-				$this->image = $img;
+				$this->img = $img;
 				return true;
 			}
 		}

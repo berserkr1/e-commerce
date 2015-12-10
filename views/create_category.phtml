@@ -1,6 +1,6 @@
 <hr/>
 <h3>Créer une nouvelle catégorie</h3>
-<form method="post" action="?page=category&amp;id=<?=$db->lastInsertId()?>" role="form">
+<form method="post" action="?page=create_category" role="form">
 	<div class="form-group">
 		<label for="name" class="control-label">Name</label>
 		<input type="text" class="form-control" name="category_name" id="name" value="<?=htmlentities($category_name)?>" required>

@@ -18,7 +18,7 @@
 				else
 				{
 					$_SESSION['success'] = "Category has been created";
-					header('Location: ?page=category&amp;id='.$category->getId());
+					header('Location: ?page=create_category');
 					exit;
 				}
 			}
