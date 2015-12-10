@@ -29,9 +29,9 @@
 
 // ________ HUB ________
 	// Pages
-	$access_public = array('404', 'home', 'category', 'subcategory', 'list-product', 'product', 'basket', 'register', 'login');
-	$access_user = array('404', 'home', 'category', 'subcategory', 'list-product', 'product', 'basket',  'profil', 'logout', 'edit_profil', 'edit_address');
-	$access_admin = array('404', 'home', 'create_category', 'category', 'create_sub_category', 'subcategory', 'create_product', 'list-product', 'product', 'basket', 'profil', 'logout', 'dashboard_user', 'dashboard_message', 'dashboard_order', 'edit_profil', 'edit_address');
+	$access_public = array('404', 'home', 'category', 'sub_category', 'list-product', 'product', 'basket', 'register', 'login');
+	$access_user = array('404', 'home', 'category', 'sub_category', 'list-product', 'product', 'basket',  'profil', 'logout', 'edit_profil', 'edit_address');
+	$access_admin = array('404', 'home', 'create_category', 'category', 'create_sub_category', 'sub_category', 'create_product', 'list-product', 'product', 'basket', 'profil', 'logout', 'dashboard_user', 'dashboard_message', 'dashboard_order', 'edit_profil', 'edit_address');
 	
 	// Traitements
 	$traitements_public = array('product'=>'product', 'basket'=>'basket', 'register'=>'user', 'login'=>'user');
