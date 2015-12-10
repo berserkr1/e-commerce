@@ -1,16 +1,16 @@
 <?php 
-$categoryManager = new CategoryManager($db);
+$sub_categoryManager = new SubCategoryManager($db);
 try
 {
-	$category = $categoryManager->findById($_GET['id']);
+	$sub_category = $sub_categoryManager->findById($_GET['id']);
 }
 catch (Exception $e)
 {
-	$category = $e->getMessage();
+	$sub_category = $e->getMessage();
 }
-if (!is_string($category))
+if (!is_string($sub_category))
 {
-	require('views/category.phtml');
+	require('views/sub_category.phtml');
 }
 else
 {

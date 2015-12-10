@@ -57,4 +57,27 @@ class ProductManager
 			return $errors;
 		}	
 	}
+
+	public function findById($id)
+	{
+		$id	= intval($id);
+		$query = "SELECT * FROM product WHERE id=".$id;
+		$res = $this->db->query($query);			
+		if ($res)
+		{
+			$product = $res->fetchObject("Product", array($this->db));
+			if ($product)
+			{
+				return $product;
+			}
+			else
+			{
+				throw new Exception("No match");
+			}
+		}
+		else
+		{
+			throw new Exception("Internal Server Error");
+		}
+	}
 }

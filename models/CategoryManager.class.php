@@ -11,9 +11,32 @@ class CategoryManager
 	public function create($name, $description, $img)
 	{
 		$category = new Category($this->db);
-		$category->setName($name);
-		$category->setDescription($description);
-		$category->setImg($img);
+		$errors = array();
+		try
+		{
+			$category->setName($name);
+		}
+		catch (Exception $e)
+		{
+			$errors[] = $e->getMessage();
+		}
+		try
+		{
+			$category->setDescription($description);
+		}
+		catch (Exception $e)
+		{
+			$errors[] = $e->getMessage();
+		}
+		try
+		{
+			$category->setImg($img);
+		}
+		catch (Exception $e)
+		{
+			$errors[] = $e->getMessage();
+		}
+
 		if (count($errors) == 0)
 		{
 			$name = $this->db->quote($category->getName());
@@ -30,32 +53,42 @@ class CategoryManager
 				}
 				else
 				{
-					throw new Exception ("Erreur interne du serveur");
+					$errors[] = "Category not found";
+					return $errors;
 				}
+			}
+			else
+			{
+				$errors[] = "Internal server error";
+				return $errors;
 			}				
-		}	
+		}
+		else
+		{
+			return $errors;
+		}
 	}
 
-	public function read($n = 0)
-	{
-	 	$n = intval($n);		
+	public function find($n = 0)
+	{	
+		$n = intval($n);
 	 	if ($n > 0)
 	 	{
 	 		$query = 'SELECT * FROM category ORDER BY `name` ASC LIMIT '.$n;
 	 	}
 	 	else
 	 	{
-	 		$query = 'SELECT * FROM section ORDER BY `name` ASC';
+	 		$query = 'SELECT * FROM category ORDER BY `name` ASC';
 	 	}
 	 	$res = $this->db->query($query);
 	 	if ($res)
 	 	{
-	 		$category = array();
+	 		$category_list = array();
 	 		while ($category = $res->fetchObject("Category", array($this->db)))
 	 		{
-	 			$category[] = $category;
+	 			$category_list[] = $category;
 	 		}
-	 		return $category;
+	 		return $category_list;
 	 	}
 	 	else
 	 	{

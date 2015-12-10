@@ -39,7 +39,7 @@ class Category extends SubCategoryManager
 		}
 		else
 		{
-			return "Invalid name";
+			throw new Exception("Name must be under 32 characters");
 		}
 	}
 	public function setDescription($description)
@@ -51,20 +51,20 @@ class Category extends SubCategoryManager
 		}
 		else
 		{
-			return "Invalid description";
+			throw new Exception("Description must be under 512 characters");
 		}
 	}
 	public function setImg($img)
 	{
 		if ($image_proprietes = @getimagesize($img))
 		{
-			if ($image_proprietes[0] > 400 || $image_proprietes[1] > 400)
+			if ($image_proprietes[0] > 500 || $image_proprietes[1] > 500)
 			{
-				return "Invalid image dimensions (max 400x400 px)";
+				throw new Exception("Invalid image dimensions (max 500x500 px)");
 			}
 			else if (@filesize($img) > 1e6)
 			{
-				return "Invalid image size (max 25 kB)";
+				throw new Exception("Invalid image size (max 1 Mo)");
 			}
 			else
 			{
@@ -74,8 +74,8 @@ class Category extends SubCategoryManager
 		}
 		else
 		{
-			return "Invalid filetype";
+			throw new Exception("Invalid filetype");
 		}
 	}
 }
- ?>
+?>
