@@ -26,7 +26,6 @@
 
 		if ($_GET['page'] == 'create_sub_category')
 		{
-			// A CORRIGER
 			if (isset($_POST['subCategory_name'], $_POST['subCategory_banner'], $_POST['subCategory_description']))
 			{
 				$CategoryManager = new CategoryManager($db);
