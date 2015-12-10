@@ -18,7 +18,7 @@
 				else
 				{
 					$_SESSION['success'] = "Category has been created";
-					header('Location: ?page=create_category');
+					header('Location: ?page=category&id='.$category->getId());
 					exit;
 				}
 			}
@@ -43,7 +43,7 @@
 				else
 				{
 					$_SESSION['success'] = "Sous-catégorie créée avec succès";
-					header('Location: ?page=sub_category&amp;id='.$subCategory->getIdsub_Category());
+					header('Location: ?page=sub_category&id='.$subCategory->getIdsub_Category());
 					exit;
 				}
 			}
