@@ -85,7 +85,7 @@ class SubCategoryManager
 
 		if ($res)
 		{
-			$subcategory_list = $res->fetchAll(PDO::FETCH_CLASS, "SubCategory", array($this->db))
+			$subcategory_list = $res->fetchAll(PDO::FETCH_CLASS, "SubCategory", array($this->db));
 			if (count($subcategory_list) > 0)
 			{
 				return $subcategory_list;
