@@ -111,14 +111,14 @@ if (isset($_GET['page']))
 			
 			if (is_string($retour))
 			{
-				$retour=$addressManager->create($_POST['ship_address'], $_POST['ship_city'], $_POST['ship_postal_code'], $_POST['ship_region'], $_POST['ship_country'], $_POST['bill_address'], $_POST['bill_city'], $_POST['bill_postal_code'], $_POST['bill_region'], $_POST['bill_country']);
+				$retour=$addressManager->create($currentUser, $_POST['ship_address'], $_POST['ship_city'], $_POST['ship_postal_code'], $_POST['ship_region'], $_POST['ship_country'], $_POST['bill_address'], $_POST['bill_city'], $_POST['bill_postal_code'], $_POST['bill_region'], $_POST['bill_country']);
 				if (is_string($retour))
 				{
 					$errors = array_merge($errors, $retour);
 				}
 				else
 				{
-					header('Location: index.php?page=login');
+					header('Location: index.php?page=profil&id='.$currentUser->getId().'');
 					exit;
 				}
 			}

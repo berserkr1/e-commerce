@@ -59,13 +59,13 @@ class Address
 	{
 		return $this->bill_postal_code;
 	}
-	public function getBillCountry()
-	{
-		return $this->bill_country;
-	}
 	public function getBillRegion()
 	{
 		return $this->bill_region;
+	}
+	public function getBillCountry()
+	{
+		return $this->bill_country;
 	}
 
 	public function setIdUser($id_user)
@@ -113,14 +113,14 @@ class Address
 		$this->id = $bill_postal_code;
 		return true;
 	}
-	public function setBillCountry($bill_country)
-	{
-		$this->id = $bill_country;
-		return true;
-	}
 	public function setBillRegion($bill_region)
 	{
 		$this->id = $bill_region;
+		return true;
+	}
+		public function setBillCountry($bill_country)
+	{
+		$this->id = $bill_country;
 		return true;
 	}
 
