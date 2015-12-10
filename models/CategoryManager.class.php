@@ -36,11 +36,11 @@ class CategoryManager
 		}	
 	}
 
-	public function find($n)
+	public function find($n = 0)
 	{	
-	 	if (isset($n) && !is_nan($n))
+		$n = intval($n);
+	 	if ($n > 0)
 	 	{
-	 		$n = intval($n);
 	 		$query = 'SELECT * FROM category ORDER BY `name` ASC LIMIT '.$n;
 	 	}
 	 	else
