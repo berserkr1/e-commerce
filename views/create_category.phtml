@@ -3,15 +3,15 @@
 <form method="post" action="?page=category&amp;id=<?=$db->lastInsertId()?>" role="form">
 	<div class="form-group">
 		<label for="name" class="control-label">Name</label>
-		<input type="text" class="form-control" name="category_name" id="name" value="" required>
+		<input type="text" class="form-control" name="category_name" id="name" value="<?=htmlentities($category_name)?>" required>
 	</div>
 	<div class="form-group">
 		<label for="description" class="control-label">Description</label>
-		<textarea name="category_description" id="description" class="form-control" cols="30" rows="10" required></textarea>
+		<textarea name="category_description" id="description" class="form-control" cols="30" rows="10" required><?=htmlentities($category_description)?></textarea>
 	</div>
 	<div class="form-group">
 		<label for="image" class="control-label">Image</label>
-		<input type="url" name="category_banner" placeholder="500x500, 25Ko max." id="image" class="form-control" required>
+		<input type="url" name="category_banner" placeholder="500x500, 25Ko max." id="image" value="<?=htmlentities($category_banner)?>" class="form-control" required>
 	</div>	
 	<button type="submit" class="btn btn-primary pull-right">Create</button>
 </form>

@@ -3,6 +3,7 @@
 	{
 		if ($_GET['page'] == 'create_category')
 		{
+			$category_name=$category_banner=$category_description="";
 			if (isset($_POST['category_name'], $_POST['category_banner'], $_POST['category_description']))
 			{
 				$categoryManager = new CategoryManager($db);
@@ -16,12 +17,16 @@
 				}
 				else
 				{
-					$_SESSION['success'] = "Catégorie créée avec succès";
-					header('Location: ?page=category&amp;id=' .$category->getIdCategory());
+					$_SESSION['success'] = "Category has been created";
+					header('Location: ?page=category&amp;id='.$category->getId());
 					exit;
 				}
 			}
+		}
 
+		if ($_GET['page'] == 'create_sub_category')
+		{
+			// A CORRIGER
 			if (isset($_POST['subCategory_name'], $_POST['subCategory_banner'], $_POST['subCategory_description']))
 			{
 				$CategoryManager = new CategoryManager($db);
@@ -42,11 +47,6 @@
 					exit;
 				}
 			}
-		}
-
-		if ($_GET['page'] == 'create_sub_category')
-		{
-			
 		}
 	}
 ?>

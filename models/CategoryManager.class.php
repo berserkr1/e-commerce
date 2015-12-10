@@ -11,9 +11,32 @@ class CategoryManager
 	public function create($name, $description, $img)
 	{
 		$category = new Category($this->db);
-		$category->setName($name);
-		$category->setDescription($description);
-		$category->setImg($img);
+		$errors = array();
+		try
+		{
+			$category->setName($name);
+		}
+		catch (Exception $e)
+		{
+			$errors[] = $e->getMessage();
+		}
+		try
+		{
+			$category->setDescription($description);
+		}
+		catch (Exception $e)
+		{
+			$errors[] = $e->getMessage();
+		}
+		try
+		{
+			$category->setImg($img);
+		}
+		catch (Exception $e)
+		{
+			$errors[] = $e->getMessage();
+		}
+
 		if (count($errors) == 0)
 		{
 			$name = $this->db->quote($category->getName());
@@ -30,10 +53,20 @@ class CategoryManager
 				}
 				else
 				{
-					throw new Exception ("Erreur interne du serveur");
+					$errors[] = "Category not found";
+					return $errors;
 				}
+			}
+			else
+			{
+				$errors[] = "Internal server error";
+				return $errors;
 			}				
-		}	
+		}
+		else
+		{
+			return $errors;
+		}
 	}
 
 	public function find($n = 0)
