@@ -3,7 +3,7 @@
 	{
 		if ($_GET['page'] == 'create_category')
 		{
-			$category_name=$category_banner=$category_description="";
+			$category_name = $category_banner = $category_description = "";
 			if (isset($_POST['category_name'], $_POST['category_banner'], $_POST['category_description']))
 			{
 				$categoryManager = new CategoryManager($db);
@@ -17,7 +17,7 @@
 				}
 				else
 				{
-					$_SESSION['success'] = "Category has been created";
+					$_SESSION['success'] = "Categorie créée avec succès";
 					header('Location: ?page=category&id='.$category->getId());
 					exit;
 				}
