@@ -1,6 +1,6 @@
 <?php 
 	$categoryManager = new CategoryManager($db);
-	try
+/*	try
 	{
 		$category_list = $categoryManager->find();
 	}
@@ -20,6 +20,6 @@
 			$category = $category_list[$i];
 			require('views/create_category_list.phtml');
 		}
-	}
+	}*/
 	require('views/create_category.phtml');
 ?>
