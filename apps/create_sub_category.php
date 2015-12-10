@@ -1,18 +1,25 @@
-<?php
-$categoryManager = new CategoryManager($db);
-$category = $categoryManager->read();
-
-$sub_categoryManager = new Sub_CategoryManager($db);
-$sub_category = $sub_categoryManager->read();
-if (count($sub_category) == 0)
-{
-	$sub_category = "Nothing to show";
-}
-else
-{
-	for ($i = 0, $c = count($sub_category); $i < $c; $i++)
+<?php 
+	$subCategoryManager = new SubCategoryManager($db);
+	try
 	{
-		$sub_category = $sub_category[$i];
-		require('views/create_sub_category.phtml');
+		$subcategory_list = $subCategoryManager->find();
 	}
-}
+	catch (Exception $e)
+	{
+		$subcategory_list = $e->getMessage();
+	}
+
+	if (is_string($subcategory_list))
+	{
+		$errors[] = "Nothing to show";
+	}
+	else
+	{
+		for ($i = 0; $i<count($subcategory_list); $i++)
+		{
+			$subcategory = $subcategory_list[$i];
+			require('views/create_sub_category_list.phtml');
+		}
+	}
+	require('views/create_sub_category.phtml');
+?>

@@ -36,26 +36,26 @@ class CategoryManager
 		}	
 	}
 
-	public function read($n = 0)
-	{
-	 	$n = intval($n);		
-	 	if ($n > 0)
+	public function find($n)
+	{	
+	 	if (isset($n) && !is_nan($n))
 	 	{
+	 		$n = intval($n);
 	 		$query = 'SELECT * FROM category ORDER BY `name` ASC LIMIT '.$n;
 	 	}
 	 	else
 	 	{
-	 		$query = 'SELECT * FROM section ORDER BY `name` ASC';
+	 		$query = 'SELECT * FROM category ORDER BY `name` ASC';
 	 	}
 	 	$res = $this->db->query($query);
 	 	if ($res)
 	 	{
-	 		$category = array();
+	 		$category_list = array();
 	 		while ($category = $res->fetchObject("Category", array($this->db)))
 	 		{
-	 			$category[] = $category;
+	 			$category_list[] = $category;
 	 		}
-	 		return $category;
+	 		return $category_list;
 	 	}
 	 	else
 	 	{

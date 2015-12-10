@@ -103,7 +103,7 @@
 		// Read functions
 		public function find($n)
 		{			
-			if (isset($n))
+			if (isset($n) && !is_nan($n))
 			{
 				$n = intval($n);
 				$query = '	SELECT * 

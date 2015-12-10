@@ -50,32 +50,55 @@ class SubCategoryManager
 		}
 	}
 
-	public function read($n = 0)
+	public function find($n)
+	{	
+	 	if (isset($n) && !is_nan($n))
+	 	{
+	 		$n = intval($n);
+	 		$query = 'SELECT * FROM sub_category ORDER BY `name` ASC LIMIT '.$n;
+	 	}
+	 	else
+	 	{
+	 		$query = 'SELECT * FROM sub_category ORDER BY `name` ASC';
+	 	}
+	 	$res = $this->db->query($query);
+	 	if ($res)
+	 	{
+	 		$subcategory_list = array();
+	 		while ($subcategory = $res->fetchObject("SubCategory", array($this->db)))
+	 		{
+	 			$subcategory_list[] = $subcategory;
+	 		}
+	 		return $subcategory_list;
+	 	}
+	 	else
+	 	{
+	 		throw new Exception ("Database error");
+	 	}
+	}
+
+	public function findByIdCategory($id_category)
 	{
-		$n = intval($n);
-		
-		if ($n > 0)
-		{
-			$query = 'SELECT * FROM sub_category ORDER BY `name` ASC LIMIT '.$n;
-		}
-		else
-		{
-			$query = 'SELECT * FROM sub_category ORDER BY `name` ASC';
-		}		
+		$id_category = intval($id_category);
+		$query = 'SELECT * FROM sub_category WHERE id_category ='.$id_category;
 		$res = $this->db->query($query);
+
 		if ($res)
 		{
-			$sub_category = array();
-			while ($sub_category = $res->fetchObject('SubCategory', array($this->db)))
+			$subcategory_list = $res->fetchAll(PDO::FETCH_CLASS, "SubCategory", array($this->db))
+			if (count($subcategory_list) > 0)
 			{
-				$sub_category[] = $sub_category;
+				return $subcategory_list;
 			}
-			return $sub_category;
+			else
+			{
+				throw new Exception('Subcategory not found');
+			}
 		}
 		else
 		{
-			return 'Database error';
+			throw new Exception('Error 02 : Database error');
 		}
 	}
 }
- ?>
+?>
