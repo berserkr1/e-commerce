@@ -10,26 +10,48 @@ class SubCategoryManager
 
 	public function create(Category $category, $name, $description, $img)
 	{
-		$sub_category = new SubCategory($this->db);
-		$valide	= $sub_category->setName($name);
+		$sub_category = new SubCategory($this->db);		
 		$errors = array();
-		$errors[] = $sub_category->setCategory($category);
-		$errors[] = $sub_category->setName($name);
-		$errors[] = $sub_category->setDescription($description);
-		$errors[] = $sub_category->setImg($img);
-
-		$errors = array_filter($errors, function($val)
-			{
-				return $val !== true;
-			});
+		try
+		{
+			$sub_category->setCategory($category);
+		}
+		catch (Exception $e)
+		{
+			$errors[] = $e->getMessage();
+		}
+		try
+		{
+			$sub_category->setName($name);
+		}
+		catch (Exception $e)
+		{
+			$errors[] = $e->getMessage();
+		}
+		try
+		{
+			$sub_category->setDescription($description);
+		}
+		catch (Exception $e)
+		{
+			$errors[] = $e->getMessage();
+		}
+		try
+		{
+			$sub_category->setImg($img);
+		}
+		catch (Exception $e)
+		{
+			$errors[] = $e->getMessage();
+		}			
 
 		if (count($errors) == 0)
 		{
 			$idCategory = intval($sub_category->getIdCategory());
-			$name = mysqli_escape_string($this->db, $sub_category->getName());
-			$description = mysqli_escape_string($this->db, $sub_category>getDescription());
-			$img = mysqli_escape_string($this->db, $sub_category->getImg());
-			$query	= "INSERT INTO sub_category (id_category, name, description, img) VALUES ('".$idCategory."', '".$name."', '".$description."', '".$img."')";
+			$name = $this->db->quote($sub_category->getName());
+			$description = $this->db->quote($sub_category>getDescription());
+			$img = $this->db->quote($sub_category->getImg());
+			$query	= "INSERT INTO sub_category (id_category, name, description, img) VALUES (".$idCategory.", ".$name.", ".$description.", ".$img.")";
 			$res = $this->db->exec($query);
 			if ($res)
 			{
@@ -50,7 +72,7 @@ class SubCategoryManager
 		}
 	}
 
-	public function find($n)
+	public function find($n = 0)
 	{	
 	 	if (isset($n) && !is_nan($n))
 	 	{
