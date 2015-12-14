@@ -1,25 +1,39 @@
 <hr/>
 <h3>Ajouter un nouveau produit</h3>
 <form method="post" action="?page=product&amp;id=<?=$db->lastInsertId()?>" role="form">
+	<select name="subCategory_category" class="form-group">
+		<option value="0" selected>Choose the category</option>
+		<option value="1">PC</option>
+		<option value="2">Jeux vidéo</option>
+		<option value="3">DVD/Blu-ray</option>
+		<option value="4">Accessoires</option>
+	</select><br>
+	<select name="subCategory_category" class="form-group">
+		<option value="0" selected>Choose the subcategory</option>
+		<option value="1">PC</option>
+		<option value="2">Jeux vidéo</option>
+		<option value="3">DVD/Blu-ray</option>
+		<option value="4">Accessoires</option>
+	</select>
 	<div class="form-group">
 		<label for="image">Image</label>
-		<input type="url" name="image" placeholder="500x500, 25Ko max." id="image" class="form-control" required>
+		<input type="url" name="img" placeholder="500x500, 25Ko max." id="image" class="form-control" required>
 	</div>
 	<div class="form-group">
 		<label for="create_name" class="control-label">Name :</label>
-		<input type="text" class="form-control" name="create_name" id="create_name" value="<?=  (isset($created_name)) ? htmlentities($created_name) : "" ;?>" required>
+		<input type="text" class="form-control" name="name" id="create_name" value="<?= (isset($name))?htmlentities($name) : "" ;?>" required>
 	</div>
 	<div class="form-group">
-		<label for="create_message" class="control-label">Description :</label>
-		<textarea name="create_message" id="create_message" class="form-control" cols="30" rows="10" required><?=  (isset($created_message)) ? htmlentities($created_message) : ""; ?></textarea>
+		<label for="create_description" class="control-label">Description :</label>
+		<textarea name="description" id="create_description" class="form-control" cols="30" rows="10" required><?= (isset($description))?htmlentities($description) : ""; ?></textarea>
 	</div>
 	<div class="form-group">
 		<label for="create_price" class="control-label">Prix :</label>
-		<input type="text" class="form-control" name="create_price" id="create_price" value="<?=  (isset($created_price)) ? htmlentities($created_price) : "" ;?>" required>
+		<input type="text" class="form-control" name="price" id="create_price" value="<?= (isset($price))?htmlentities($price) : "" ;?>" required>
 	</div>
 	<div class="form-group">
 		<label for="create_stock" class="control-label">Stock :</label>
-		<input type="text" class="form-control" name="create_stock" id="create_stock" value="<?=  (isset($created_stock)) ? htmlentities($created_stock) : "" ;?>" required>
+		<input type="text" class="form-control" name="stock" id="create_stock" value="<?= (isset($stock))?htmlentities($stock) : "" ;?>" required>
 	</div>
 	<button type="submit" class="btn btn-primary pull-right">Ajouter</button>
 </form>
