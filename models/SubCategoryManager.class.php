@@ -49,9 +49,9 @@ class SubCategoryManager
 		{
 			$idCategory = intval($sub_category->getIdCategory());
 			$name = $this->db->quote($sub_category->getName());
-			$description = $this->db->quote($sub_category>getDescription());
+			$description = $this->db->quote($sub_category->getDescription());
 			$img = $this->db->quote($sub_category->getImg());
-			$query	= "INSERT INTO sub_category (id_category, name, description, img) VALUES (".$idCategory.", ".$name.", ".$description.", ".$img.")";
+			$query	= "INSERT INTO sub_category (id_category, name, description, img) VALUES ('".$idCategory."', ".$name.", ".$description.", ".$img.")";
 			$res = $this->db->exec($query);
 			if ($res)
 			{
