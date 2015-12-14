@@ -22,7 +22,7 @@
 		{
 			$order = new Order($this->db);
 			$errors = array();
-			$order -> setUser($user);
+			$order->setUser($user);
 			$id_user = $order->getUser()->getId();
 			$query = 'INSERT INTO order (id_user,amount,status) VALUES ("'.$id_user.'","0","'.STATUS_UNPAID.'")';
 			$res = $this->db->exec($query);
