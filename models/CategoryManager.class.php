@@ -110,7 +110,7 @@ class CategoryManager
 			}
 			else
 			{
-				throw new Exception("No match");
+				throw new Exception("Category not found");
 			}
 		}
 		else
@@ -119,4 +119,4 @@ class CategoryManager
 		}
 	}
 }
- ?>
+?>
