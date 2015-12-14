@@ -1,4 +1,12 @@
 <?php
+class BasketManager
+{
+	private $db;
+
+	public function __construct($db)
+	{
+		$this->db = $db;
+	}
 
 public function addToBasket(Product $product)
 {
