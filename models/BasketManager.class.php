@@ -8,10 +8,14 @@
 			$this->db = $db;
 		}
 
-	public function create(Product $product)
+	public function create(User $user, Product $product)
 	{
 		if ( isset($_SESSION['id']) )
 		{
+			//----------
+			$orderManager = new OrderManager($this->db);
+			$order  = $orderManager->create($user);
+			//----------
 			$id_product = intval($product->getId());
 			$query = "INSERT INTO basket (id_product,quantity) VALUES ('".$id_product."','1')";
 			$res = $this->db->exec($query);
