@@ -20,6 +20,12 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
+       <li>
+          <a href="?page=profil&amp;id=<?=$_SESSION['id']?>" class="user"><i class="fa fa-user fa-2x"></i></a>
+       </li>
+       <li>
+          <a href="?page=basket&amp;id=<?=$_SESSION['id']?>" class="user"><i class="fa fa-shopping-cart fa-2x"></i></a>
+       </li>
        <li><a href="?page=create_category">Créer une catégorie</a></li>
        <li><a href="?page=create_sub_category">Créer une sous-catégorie</a></li>
        <li><a href="?page=create_product">Ajouter un produit</a></li>
