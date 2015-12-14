@@ -1,6 +1,6 @@
 <h1 class="login-title"><?=$currentUser->getLogin()?><small> - Registered on : <?=$currentUser->getDateRegister()?></small></h1>
 <div class="col-md-6 col-sm-6">
-	<h3 class="info-title">Personal informations</h2>
+	<div class="circle"><i class="fa fa-male"></i></div><h3 class="info-title">Personal informations</h2>
 	<p><strong>Email : </strong><?=$currentUser->getEmail()?></p>
 	<p><strong>Name : </strong><?=$currentUser->getName()?></p>
 	<p><strong>Surname : </strong><?=$currentUser->getSurname()?></p>
@@ -8,13 +8,13 @@
 	<button class="btn btn-default"><a href="?page=edit_profil&amp;id=<?=$_SESSION['id']?>">Edit informations</a></button>
 </div>
 <div class="col-md-6 col-sm-6">
-	<h3 class="info-title">Shipping informations</h2>
+	<div class="circle"><i class="fa fa-male"></i></div><h3 class="info-title">Shipping informations</h2>
 	<p><strong>Address : </strong><?=$ship_address?></p>
 	<p><strong>Postal code : </strong><?=$ship_postal_code?></p>
 	<p><strong>City : </strong><?=$ship_city?></p>
 	<p><strong>Region : </strong><?=$ship_region?></p>
 	<p><strong>Country : </strong><?=$ship_country?></p>
-	<h3 class="info-title">Billing informations</h2>
+	<div class="circle"><i class="fa fa-male"></i></div><h3 class="info-title">Billing informations</h2>
 	<p><strong>Address : </strong><?=$bill_address?></p>
 	<p><strong>Postal code : </strong><?=$bill_postal_code?></p>
 	<p><strong>City : </strong><?=$bill_city?></p>

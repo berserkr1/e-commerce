@@ -3,6 +3,7 @@ class Address
 {
 	private $id;
 	private $id_user;
+	private $user;
 	private $ship_address;
 	private $ship_city;
 	private $ship_postal_code;
@@ -14,10 +15,10 @@ class Address
 	private $bill_country;
 	private $bill_region;
 
-	// public function __construct($db);
-	// {
-	// 	$this->db = $db;
-	// }
+	public function __construct($db)
+	{
+		$this->db = $db;
+	}
 
 	public function getId()
 	{
@@ -26,6 +27,18 @@ class Address
 	public function getIdUser()
 	{
 		return $this->id_user;
+	}
+	public function getUser()
+	{
+		$id_user = intval($this->id_user);
+		$query = 'SELECT * FROM user WHERE id ='.$id_user;
+		$res = $this->db->query($query);
+
+		if ($res && ($user = $res->fetchObject("User", array($this->db))))
+		{
+			$this->user = $user;
+		}
+		return $this->user;
 	}
 	public function getShipAddress()
 	{
@@ -68,59 +81,60 @@ class Address
 		return $this->bill_country;
 	}
 
-	public function setIdUser($id_user)
-	{
-		$this->id_user = $id_user;
-		return true;
-	}
+	public function setUser(User $user)
+		{
+			$this->user	= $user;
+			$this->id_user = $user->getId();
+			return true;
+		}
 	public function setShipAddress($ship_address)
 	{
-		$this->id = $ship_address;
+		$this->ship_address = $ship_address;
 		return true;
 	}
 	public function setShipCity($ship_city)
 	{
-		$this->id = $ship_city;
+		$this->ship_city = $ship_city;
 		return true;
 	}
 	public function setShipPostalCode($ship_postal_code)
 	{
-		$this->id = $ship_postal_code;
+		$this->ship_postal_code = $ship_postal_code;
 		return true;
 	}
 	public function setShipRegion($ship_region)
 	{
-		$this->id = $ship_region;
+		$this->ship_region = $ship_region;
 		return true;
 	}
 	public function setShipCountry($ship_country)
 	{
-		$this->id = $ship_country;
+		$this->ship_country = $ship_country;
 		return true;
 	}
 	public function setBillAddress($bill_address)
 	{
-		$this->id = $bill_address;
+		$this->bill_address = $bill_address;
 		return true;
 	}
 	public function setBillCity($bill_city)
 	{
-		$this->id = $bill_city;
+		$this->bill_city = $bill_city;
 		return true;
 	}
 	public function setBillPostalCode($bill_postal_code)
 	{
-		$this->id = $bill_postal_code;
+		$this->bill_postal_code = $bill_postal_code;
 		return true;
 	}
 	public function setBillRegion($bill_region)
 	{
-		$this->id = $bill_region;
+		$this->bill_region = $bill_region;
 		return true;
 	}
 		public function setBillCountry($bill_country)
 	{
-		$this->id = $bill_country;
+		$this->bill_country = $bill_country;
 		return true;
 	}
 

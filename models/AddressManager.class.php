@@ -11,7 +11,7 @@ class AddressManager
 	public function create(User $user, $ship_address, $ship_city, $ship_postal_code, $ship_region, $ship_country, $bill_address, $bill_city, $bill_postal_code, $bill_region, $bill_country)
 	{
 		$errors = array();
-		$address = new Address($this -> db);
+		$address = new Address($this->db);
 		try
 		{
 			$address -> setUser($user);
@@ -32,7 +32,7 @@ class AddressManager
 		}
 		if (count($errors) == 0)
 		{
-			$user = $this->db->quote($currentUser->getId());
+			$id_user = $this->db->quote($user->getId());
 			$ship_address = $this->db->quote($address->getShipAddress());
 			$ship_city = $this->db->quote($address->getShipCity());
 			$ship_postal_code = $this->db->quote($address->getShipPostalCode());
@@ -65,6 +65,29 @@ class AddressManager
 			return $errors;
 		}
 	}
+	public function findById($id)
+	{
+		$id = intval($id);
+		$query = "SELECT * FROM address WHERE id=".$id;
+		$res = $this->db->query($query);
+
+		if ($res)
+		{
+			$address = $res->fetchObject("Address",array($this->db));
+			if ($address)
+			{
+				return $address;
+			}
+			else
+			{
+				throw new Exception("Address not found");
+			}
+		}
+		else 
+		{
+			throw new Exception("Database error");
+		}
+	}
 	// public function delete(address $address)
 	// {
 	// 	$id = $address->getId();
@@ -95,7 +118,7 @@ class AddressManager
 
 		$query = "UPDATE address SET ship_address=".$ship_address.", ship_city=".$ship_city.", ship_postal_code=".$ship_postal_code.", ship_region=".$ship_region.", ship_country=".$ship_country.", bill_address=".$bill_address.", bill_city=".$bill_city.", bill_postal_code=".$bill_postal_code.", bill_region=".$bill_region.", bill_country=".$bill_country.",WHERE id='".$id."'";
 
-		$res = $db->exec($query);
+		$res = $this->db->exec($query);
 		if ($res)
 		{
 			return $this->findById($id);
@@ -108,13 +131,12 @@ class AddressManager
 	public function findByIdUser($id_user) 
 	{
 		$id_user = intval($id_user);
-		$userManager= new UserManager ($this->db);
 		$query = "SELECT * FROM address WHERE id_user=".$id_user;
 		$res = $this->db->query($query);
 
 		if($res)
 		{
-			$address = $res->fetchObject("Address");
+			$address = $res->fetchObject("Address", array($this->db));
 			if ($address)
 			{
 				return $address;
