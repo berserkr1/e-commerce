@@ -1,28 +1,38 @@
 <?php 
-if (isset($_POST['action'])) {
-	if ($_POST['action'] == 'create') {
-		if (isset ($_POST['create_product'])) {
-			$create_product = $_POST['create_product'];
-			$productManager = new ProductManager($db);
-			$subCategoryManager = new SubCategoryManager($db);
-			$subCategory = $subCategoryManager->readById(intval($_GET['id']));
-			$res = $productManager->create($subCategory, $_POST['create_product']);
-			if (is_array($res))
+	if (isset($_GET['page']))
+	{
+		if ($_GET['page'] == 'create_product')
+		{
+			$name = $description = $price = $img = $stock = "";
+			if (isset ($_POST['name']), $_POST['description'], $_POST['price'], $_POST['img'], $_POST['stock'])
 			{
-				$errors = $res;
-				return $errors;
-			}
-			else if (is_string($res))
-			{
-				$errors[] = $res;
-			}
-			else
-			{
-				$_SESSION['success'] = "Produit créé avec succès";
-				header('Location: ?page=product&id='.$res->getProduct()->getId());
-				exit;
+				$productManager = new ProductManager($db);
+				$subCategoryManager = new SubCategoryManager($db);
+				try
+				{
+					$subCategory = $subCategoryManager->findById(intval($_GET['id']));
+				}
+				catch (Exception $e)
+				{
+					$errors[] = $e->getMessage();
+				}
+				$product = $productManager->create($subCategory, $_POST['name'], $_POST['description'], $_POST['price'], $_POST['img'], $_POST['stock']);
+				if (is_array($product))
+				{
+					$errors = array_merge($errors, $product);
+					$name = $_POST['name'];
+					$description = $_POST['description'];
+					$price = $_POST['price'];
+					$img = $_POST['img'];
+					$stock = $_POST['stock'];
+				}
+				else
+				{
+					$_SESSION['success'] = "Produit créé avec succès";
+					header('Location: ?page=product&id='.$product->getId());
+					exit;
+				}
 			}
 		}
 	}
-}
  ?>
