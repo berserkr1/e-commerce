@@ -67,6 +67,7 @@ if (isset($_GET['page']))
 
 	else if ($action == 'edit_profil')
 	{
+		
 		if (isset($_POST['login'], $_POST['email'], $_POST['password1'], $_POST['password2'], $_POST['name'], $_POST['surname'], $_POST['date_birth']))
 		{
 			$manager = new UserManager($db);
@@ -118,14 +119,15 @@ if (isset($_GET['page']))
 				}
 				else
 				{
-					header('Location: index.php?page=profil&id='.$currentUser->getId().'');
+					header('Location: index.php?page=profil');
 					exit;
 				}
 			}
 			
 			else
 			{
-				$address = new Address();
+				$addressManager = new AddressManager($db);
+				$address = $addressManager->findByIdUser($_SESSION['id']);
 
 				$address->setShipAddress($_POST['ship_address']);
 				$address->setShipCity($_POST['ship_city']);
@@ -138,7 +140,7 @@ if (isset($_GET['page']))
 				$address->setBillRegion($_POST['bill_region']);
 				$address->setBillCountry($_POST['bill_country']);
 
-				$retour=$addressManager->update($_POST['ship_address'], $_POST['ship_city'], $_POST['ship_postal_code'], $_POST['ship_region'], $_POST['ship_country'], $_POST['bill_address'], $_POST['bill_city'], $_POST['bill_postal_code'], $_POST['bill_region'], $_POST['bill_country']);
+				$retour=$addressManager->update($address);
 				
 				if (is_array($retour))
 				{
@@ -146,8 +148,8 @@ if (isset($_GET['page']))
 				}
 				else
 				{
-					$user = $retour;
-					header('Location: index.php?page=profil&id='.$user->getId().'');
+					$_SESSION['success']='Your informations has been updated';
+					header('Location: index.php?page=profil');
 					exit;
 				}
 
