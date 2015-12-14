@@ -4,7 +4,7 @@
 		if ($_GET['page'] == 'create_product')
 		{
 			$name = $description = $price = $img = $stock = "";
-			if (isset ($_POST['name']), $_POST['description'], $_POST['price'], $_POST['img'], $_POST['stock'])
+			if (isset ($_POST['name'], $_POST['description'], $_POST['price'], $_POST['img'], $_POST['stock']))
 			{
 				$productManager = new ProductManager($db);
 				$subCategoryManager = new SubCategoryManager($db);
