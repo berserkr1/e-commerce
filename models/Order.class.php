@@ -67,7 +67,7 @@
 		public function setAmount()
 		{
 			$id_order = $this->id;
-			$query = "SELECT id_product FROM basket WHERE id_order=".$id_order;
+			$query = "SELECT * FROM basket WHERE id_order=".$id_order;
 			$res = $this->db->query($query);
 			if ($res)
 			{
@@ -75,12 +75,12 @@
 				$amount=0;
 				for ($i=0;$i<count($basket);$i++)
 				{
-					$query = "SELECT * FROM product WHERE id =".$basket[$i];
+					$query = "SELECT * FROM product WHERE id =".$basket[$i]['id'];
 					$res = $this->db->query($query);
 					if ($res)
 					{
 						$product = $res->fetchObject("Product", array($this->db));
-						$amount+= floatval($product->getPrice());
+						$amount+= floatval($product->getPrice())*$basket[$i]['quantity'];
 					}
 				}
 				else

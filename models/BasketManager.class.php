@@ -1,42 +1,40 @@
 <?php
-class BasketManager
-{
-	private $db;
-
-	public function __construct($db)
+	class BasketManager
 	{
-		$this->db = $db;
-	}
+		private $db;
 
-public function addToBasket(Product $product)
-{
-	$id_product = intval($product->getId());
-
-	if ( isset($_SESSION['id']) )
-	{
-		$query = "INSERT INTO basket (id_product) VALUES(".$id_product.")";
-		$res = $this->db->exec($query);
-		if($res)
+		public function __construct($db)
 		{
-			$id = $this->db->lastInsertId();
-			if ($id)
+			$this->db = $db;
+		}
+
+	public function create(Product $product)
+	{
+		if ( isset($_SESSION['id']) )
+		{
+			$id_product = intval($product->getId());
+			$query = "INSERT INTO basket (id_product,quantity) VALUES ('".$id_product."','1')";
+			$res = $this->db->exec($query);
+			if($res)
 			{
-				return $this->findById($id);
+				$id = $this->db->lastInsertId();
+				if ($id)
+				{
+					return $this->findById($id);
+				}
+				else
+				{
+					throw new Exception ("Internal server error");
+				}
 			}
 			else
 			{
-				throw new Exception ("Internal server error");
+				throw new Exception ("Database error");
 			}
 		}
-		else
+		else 
 		{
-			throw new Exception ("Database error");
+			throw new Exception ("You must be logged in to purchase");
 		}
 	}
-	else 
-	{
-		throw new Exception ("Error");
-	}
-}
-
 ?>
