@@ -4,13 +4,13 @@
 		if ($_GET['page'] == 'create_product')
 		{
 			$name = $description = $price = $img = $stock = "";
-			if (isset ($_POST['name'], $_POST['description'], $_POST['price'], $_POST['img'], $_POST['stock']))
+			if (isset ($_POST['name'], $_POST['description'], $_POST['price'], $_POST['img'], $_POST['stock'], $_POST['subCategory_category']))
 			{
 				$productManager = new ProductManager($db);
 				$subCategoryManager = new SubCategoryManager($db);
 				try
 				{
-					$subCategory = $subCategoryManager->findById(intval($_GET['id']));
+					$subCategory = $subCategoryManager->findById($_POST['subCategory_category']);
 				}
 				catch (Exception $e)
 				{
