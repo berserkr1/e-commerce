@@ -1,6 +1,13 @@
 <hr/>
 <h3>Créer une nouvelle sous-catégorie</h3>
 <form method="post" action="?page=create_sub_category" role="form">
+	<select name="subCategory_category" class="form-group">
+		<option value="0" selected>Choose the category</option>
+		<option value="1">PC</option>
+		<option value="2">Jeux vidéo</option>
+		<option value="3">DVD/Blu-ray</option>
+		<option value="4">Accessoires</option>
+	</select>
 	<div class="form-group">
 		<label for="name" class="control-label">Name</label>
 		<input type="text" class="form-control" name="subCategory_name" id="name" value="<?=htmlentities($subCategory_name)?>" required>
