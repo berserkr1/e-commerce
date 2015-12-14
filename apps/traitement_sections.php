@@ -27,10 +27,19 @@
 		if ($_GET['page'] == 'create_sub_category')
 		{
 			$subCategory_name=$subCategory_banner=$subCategory_description="";
-			if (isset($_POST['subCategory_name'], $_POST['subCategory_banner'], $_POST['subCategory_description']))
+			if (isset($_POST['subCategory_name'], $_POST['subCategory_banner'], $_POST['subCategory_description'], $_POST['subCategory_category']))
 			{
 				$subCategoryManager = new SubCategoryManager($db);
-				$subCategory = $subCategoryManager->create('1', $_POST['subCategory_name'], $_POST['subCategory_description'], $_POST['subCategory_banner']);
+				$categoryManager = new CategoryManager($db);
+				try
+				{
+					$category = $categoryManager->findById($_POST['subCategory_category']);
+				}
+				catch (Exception $e)
+				{
+					$errors[] = $e->getMessage();
+				}
+				$subCategory = $subCategoryManager->create($category, $_POST['subCategory_name'], $_POST['subCategory_description'], $_POST['subCategory_banner']);
 				if (is_array($subCategory))
 				{
 					$errors = array_merge($errors, $subCategory);

@@ -84,7 +84,7 @@ class SubCategory extends ProductManager
 	}
 	public function setImg($img)
 	{
-		if ($image_proprietes = @getimagesize($image))
+		if ($image_proprietes = @getimagesize($img))
 		{
 			if ($image_proprietes[0] > 500 || $image_proprietes[1] > 500)
 			{
