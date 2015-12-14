@@ -1,7 +1,11 @@
+<hr>
 <div class="row">
   <div class="section-head col-xs-12 text-center">
       <img src="<?=htmlentities($product->getImg()); ?>" alt="section-logo">
       <h1><?=htmlentities($product->getName()) ?></h1>
+      <p><?=htmlentities($product->getDescription()) ?></p>
+      <p><?=htmlentities($product->getPrice()) ?>€</p>
+      <hr>
   </div>     
 </div> <!-- row -->
 
