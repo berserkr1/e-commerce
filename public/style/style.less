@@ -11,7 +11,12 @@ html, body {
 }
 
 .wrap {
-	min-height: 78%;   
+	min-height: 100%;   
+}
+
+.main {
+	overflow: auto;
+	padding-bottom: 100px;
 }
 
 .form-control, .btn {
@@ -75,27 +80,27 @@ html, body {
 } 
 
 .owl-theme .owl-controls .owl-buttons div {
-  padding: 5px 9px;
+  	padding: 5px 9px;
 }
  
 .owl-theme .owl-buttons i {
-  margin-top: 2px;
+  	margin-top: 2px;
 }
  
 /*To move navigation buttons outside use these settings:*/
  
 .owl-theme .owl-controls .owl-buttons div {
-  position: absolute;
+  	position: absolute;
 }
  
 .owl-theme .owl-controls .owl-buttons .owl-prev {
-  left: -45px;
-  top: 55px; 
+  	left: -45px;
+  	top: 55px; 
 }
  
 .owl-theme .owl-controls .owl-buttons .owl-next {
-  right: -45px;
-  top: 55px;
+  	right: -45px;
+  	top: 55px;
 }
 
 /* CATEGORY */
@@ -186,10 +191,19 @@ html, body {
 	color: #BEB4B4;
 }
 
+/*--CREATE PRODUCT--*/
+
+optgroup option
+{
+	padding-left: 10px;
+}
+
 /*--FOOTER--*/
 
-footer {
-	margin-top: 20px;
+footer {	
+	position: relative;
+	clear: both;
+	margin-top: -85px;
 	height: 85px;
 	background-color: #222;
 	padding-top: 20px;

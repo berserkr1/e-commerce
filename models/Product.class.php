@@ -1,5 +1,5 @@
 <?php 
-class Product
+class Product extends MessageManager
 {
 	private $id;
 	private $id_sub_category;
@@ -64,13 +64,13 @@ class Product
 		return $this->stock;
 	}
 
-	public function setSubCategory()
+	public function setSubCategory(SubCategory $sub_category)
 	{
 		$this->id_sub_category = $sub_category->getId();
 		$this->sub_category	= $sub_category;
 		return true;
 	}
-	public function setName()
+	public function setName($name)
 	{
 		if(is_string($name))
 		{
@@ -89,11 +89,11 @@ class Product
 			return 'Product name needs to be a string';
 		}
 	}
-	public function setDescription()
+	public function setDescription($description)
 	{
 		if (strlen($description) > 15 && strlen($description) < 2047)
 		{
-			$this->content = $content;
+			$this->description = $description;
 			return true;
 		}
 		else
@@ -101,22 +101,22 @@ class Product
 			return 'Description must be between 16 and 2046 characters';
 		}
 	}
-	public function setPrice()
+	public function setPrice($price)
 	{
 		$this->price = $price;
 		return true;
 	}
-	public function setRace()
+	public function setRate($rate)
 	{
-		$this->race = $race;
+		$this->rate = $rate;
 		return true;
 	}
-	public function setImg()
+	public function setImg($img)
 	{
 		$this->img = $img;
 		return true;
 	}
-	public function setStock()
+	public function setStock($stock)
 	{
 		$this->stock = $stock;
 		return true;

@@ -14,7 +14,7 @@ class ProductManager
 		$product = new Product($this->db);
 		try
 		{
-			$product->setSub_category($sub_category);
+			$product->setSubCategory($sub_category);
 			$product->setName($name);
 			$product->setDescription($description);
 			$product->setPrice($price);
@@ -23,7 +23,7 @@ class ProductManager
 		}
 		catch (Exception $e)
 		{
-			$errors[] = $e->getProduct;
+			$errors[] = $e->getMessage();
 		}	
 		$errors = array_filter($errors, function ($val) 
 		{
@@ -31,13 +31,13 @@ class ProductManager
 		});
 		if (count($errors) == 0)
 		{
-			$idSub_category = intval($product->getIdSub_category());
+			$idSubCategory = intval($product->getIdSubCategory());
 			$name = $this->db->quote($product->getName());
 			$description = $this->db->quote($product->getDescription());
 			$price = $this->db->quote($product->getPrice());
 			$img = $this->db->quote($product->getImg());
 			$stock = $this->db->quote($product->getStock());
-			$query = "INSERT INTO product(id_sub_category, name, description, price, img, stock) VALUES(" . $idSub_category . ", " . $name . ", " . $description . ", " . $price . ", " . $img . ", " . $stock . ")";
+			$query = "INSERT INTO product(id_sub_category, name, description, price, img, stock) VALUES('" . $idSub_category . "', " . $name . ", " . $description . ", " . $price . ", " . $img . ", " . $stock . ")";
 			$res = $this->db->exec($query);
 			if ($res)
 			{
