@@ -1,0 +1,50 @@
+<div class="row centered-form">
+    <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+    	<div class="panel panel-default">
+    		<div class="panel-heading">
+		    	<h3 class="panel-title">Delivery address informations</h3>
+		 	</div>
+ 			<div class="panel-body">
+	    		<form action="?page=edit_address" role="form" method="post">
+	    			<div class="form-group">
+						<input type="text" name="ship_address" id="ship_address" class="form-control input-sm" placeholder="Address" value='<?=$ship_address?>'>
+					</div>
+					<div class="form-group">
+						<input type="text" name="ship_city" id="ship_city" class="form-control input-sm"   placeholder="City" value='<?=$ship_city?>'>
+					</div>
+					<div class="form-group">
+						<input type="text" name="ship_postal_code" id="ship_postal_code" class="form-control input-sm" placeholder="Postal code" value='<?=$ship_postal_code?>'>
+					</div>
+					<div class="form-group">
+						<input type="text" name="ship_region" id="ship_region" class="form-control input-sm" placeholder="Region" value='<?=$ship_region?>'>
+					</div>
+					<div class="form-group">
+						<input type="text" name="ship_country" id="ship_country" class="form-control input-sm" placeholder="Country" value='<?=$ship_country?>'>
+					</div>
+			</div>
+			<div class="panel-heading">
+		    	<h3 class="panel-title">Delivery address informations</h3>
+		 	</div>
+		 	<div class="panel-body">
+	    			<div class="form-group">
+						<input type="text" name="bill_address" id="bill_address" class="form-control input-sm" placeholder="Address" value='<?=$bill_address?>'>
+					</div>
+					<div class="form-group">
+						<input type="text" name="bill_city" id="bill_city" class="form-control input-sm"  placeholder="City" value='<?=$bill_city?>'>
+					</div>
+					<div class="form-group">
+						<input type="text" name="bill_postal_code" id="bill_postal_code" class="form-control input-sm" placeholder="Postal code" value='<?=$bill_postal_code?>'>
+					</div>
+					<div class="form-group">
+						<input type="text" name="bill_region" id="bill_region" class="form-control input-sm" placeholder="Region" value='<?=$bill_region?>'>
+					</div>
+					<div class="form-group">
+						<input type="text" name="bill_country" id="bill_country" class="form-control input-sm" placeholder="Country" value='<?=$bill_country?>'>
+					</div>
+					
+	    			<input type="submit" value="Enregistrer" class="btn btn-info btn-block">
+	    		</form>
+	    	</div>
+		</div>
+	</div>
+</div>
